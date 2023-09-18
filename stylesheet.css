@@ -1,0 +1,74 @@
+.header {
+  margin: 0%;
+  display: inline-block;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: #4F709C;
+  padding: 1%;
+  text-align: center;
+  }
+
+
+/* Style the header links */
+.header a {
+  float: left;
+  color: #F0F0F0;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 1.5rem;
+  line-height: 25px;
+  border-radius: 4px;
+}
+  
+.header a.logo {
+  font-size: 25px;
+  font-weight: bold;
+  padding: 0%;
+  display: flex;
+}
+
+/* Change the background color on mouse-over */
+.header a:hover {
+  color: #E5D283;
+}
+
+/* Style the active/current link*/
+.active {
+  background-color: #213555;
+}
+
+/* Float the link section to the right */
+#header-right {
+  float: right;
+  padding-right: 2em;
+}
+
+@media screen and (max-width: 500px) {
+
+  .header {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+  .header a.logo {
+    width: 100%;
+    display: inline-block;
+  }
+
+  .header a {
+    display: flex;
+
+  }
+
+  #header-right {
+    width: 100%;
+    padding-left: 0%;
+    padding-right: 0%;
+  }
+}
