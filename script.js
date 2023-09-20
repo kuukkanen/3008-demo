@@ -1,19 +1,25 @@
 // eslint-disable-next-line
 function main() {
-  // Get the container element
-  var btnContainer = document.getElementById("header-right");
+  // Get all "buttons" from the header.
+  const buttons = document.querySelectorAll(".header nav a");
 
-  // Get all buttons with class="btn" inside the container
-  var btns = btnContainer.getElementsByTagName("a");
-  console.log(btns);
-
-  // Loop through the buttons and add the active class to the current/clicked button
-  for (var i = 0; i < btns.length; i++) {
-    btns[i].addEventListener("click", function () {
-      var current = document.getElementsByClassName("active");
-      current[0].className = current[0].className.replace(" active", "");
-      this.className += " active";
-      console.log("Clicked");
-    });
+  function updateActive() {
+    // For each button in the header.
+    for (const button of buttons) {
+      // Get the hash part from the button link's URL.
+      const hash = new URL(button.href).hash;
+      // Get hash from the current URL.
+      const currentHash = document.location.hash;
+      // Make it active if it's the current one.
+      button.classList.toggle("active", hash === currentHash);
+    }
   }
+
+  // Listen to history changes.
+  window.addEventListener("popstate", updateActive);
+
+  // Make "#home" demo active by default.
+  const currentLocation = document.location;
+  currentLocation.hash = "#home";
+  location.replace(currentLocation);
 }

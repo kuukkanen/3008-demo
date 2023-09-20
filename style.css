@@ -1,70 +1,69 @@
-.header {
-  margin: 0%;
-  display: inline-block;
-  position: sticky;
-  top: 0;
-  width: 100%;
-  background-color: #4f709c;
-  padding: 1%;
-  text-align: center;
+/* Use better box-sizing on every element. */
+* {
+  box-sizing: border-box;
 }
 
-/* Style the header links */
+body {
+  margin: 0;
+  line-height: 1.25;
+}
+
+/* Demo content. */
+main {
+  padding: 1rem;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  position: sticky;
+  top: 0;
+  background-color: #4f709c;
+  padding: 1rem;
+}
+
+/* Style the header "buttons". */
 .header a {
-  float: left;
+  display: flex;
   color: #f0f0f0;
-  text-align: center;
-  padding: 12px;
+  padding: 0.75rem;
   text-decoration: none;
   font-size: 1.5rem;
-  line-height: 25px;
   border-radius: 4px;
 }
 
 .header a.logo {
-  font-size: 25px;
+  font-size: 1.5rem;
   font-weight: bold;
-  padding: 0%;
-  display: flex;
+  padding: 0;
 }
 
-/* Change the background color on mouse-over */
+/* Change the text color on mouse-over. */
 .header a:hover {
   color: #e5d283;
 }
 
-/* Style the active/current link*/
+/* Style the active/current "button". */
 .active {
   background-color: #213555;
 }
 
-/* Float the link section to the right */
-#header-right {
-  float: right;
-  padding-right: 2em;
+/* Demo navigation list. */
+.header nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
 }
 
-@media screen and (max-width: 500px) {
+@media (min-width: 500px) {
+  /* Make the header horizontal on desktop. */
   .header {
-    display: inline-block;
-    margin-left: auto;
-    margin-right: auto;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .header a.logo {
-    width: 100%;
-    display: inline-block;
-  }
-
-  .header a {
-    display: flex;
-  }
-
-  #header-right {
-    width: 100%;
-    padding-left: 0%;
-    padding-right: 0%;
+    flex-direction: row;
   }
 }
