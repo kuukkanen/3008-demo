@@ -28,16 +28,29 @@ function main() {
 }
 
 // Color Generator
+// eslint-disable-next-line
 function generateNewColor() {
-  btn = document.getElementById('color-changer');
-  let color = "#";
-  let x = ['0','1','2','3','4','5','6','7','8','9','A','B','C','D', 'E','F']
+  // Get the color changing button.
+  const button = document.getElementById("color-changer");
 
-  for(let i = 0; i < 6;i++){
-      const random = Math.floor(Math.random() * x.length);
-      color += x[random];
-  }
+  // Generate random color with a random R, G, and B values.
+  const color = {
+    r: Math.random(),
+    g: Math.random(),
+    b: Math.random(),
+  };
 
-  btn.style.background = color;
+  // Calculate the perceived brightness of the color.
+  // https://en.wikipedia.org/wiki/Luma_(video)#Rec._601_luma_versus_Rec._709_luma_coefficients
+  const luminance = Math.sqrt(
+    0.299 * color.r ** 2 + 0.587 * color.g ** 2 + 0.114 * color.b ** 2,
+  );
+
+  // Change the color to the random one.
+  button.style.backgroundColor = `rgb(${color.r * 255},${color.g * 255},${
+    color.b * 255
+  })`;
+  // Make text more visible based on the brightness.
+  button.style.color = luminance <= 0.5 ? "white" : "black";
   return;
 }
