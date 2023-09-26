@@ -42,4 +42,3 @@ function main() {
   // Listen to history changes.
   window.addEventListener("popstate", updateActive);
   updateActive(); // Also update immediately.
-}
