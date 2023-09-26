@@ -64,7 +64,7 @@ main {
 .medium-image {
   display: inline;
   height: 10em;
-  margin: 2em;
+  margin: 1.5em;
   border: 2px solid #4f709c;
   border-radius: 1em;
 }
