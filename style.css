@@ -61,6 +61,18 @@ main {
   padding: 0;
 }
 
+.medium-image {
+  display: inline;
+  height: 10em;
+  margin: 1.5em;
+  border: 2px solid #4f709c;
+  border-radius: 5px;
+}
+
+hr.solid {
+  border-top: 3px solid #213555;
+}
+
 @media (min-width: 500px) {
   /* Make the header horizontal on desktop. */
   .header {
