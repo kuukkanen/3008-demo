@@ -69,6 +69,10 @@ main {
   border-radius: 1em;
 }
 
+hr.solid {
+  border-top: 3px solid #213555;
+}
+
 
 
 @media (min-width: 500px) {
