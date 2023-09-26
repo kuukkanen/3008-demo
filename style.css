@@ -61,10 +61,9 @@ main {
   padding: 0;
 }
 
-.cat {
-  content: url("https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Cat_August_2010-4.jpg/1280px-Cat_August_2010-4.jpg");
-  display: block;
-  width: 20%;
+.medium-image {
+  display: inline;
+  height: 10em;
   margin: 2em;
   border: 2px solid #4f709c;
   border-radius: 1em;
