@@ -19,6 +19,10 @@
   div.appendChild(jokeText);
   div.appendChild(button);
 
+  button.onclick = () => {
+    getJoke();
+  };
+
   getJoke();
 
   // getJoke() function definition
