@@ -33,12 +33,10 @@
         Accept: "application/json",
       },
     })
-      .then(function (response) {
-        /* convert Stringified JSON response to Javascript Object */
-        return response.json();
-      })
-      .then(function (data) {
-        /* replace innerText of .joke-text with data.joke */
+      /* convert Stringified JSON response to Javascript Object */
+      .then((response) => response.json())
+      /* replace innerText of jokeText with data.joke */
+      .then((data) => {
         // extract the joke text
         const joke = data.joke;
         // do the replacement
