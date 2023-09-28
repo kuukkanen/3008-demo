@@ -16,7 +16,6 @@
         <img class="medium-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Gemeine_Heidelibelle_%28Sympetrum_vulgatum%29_4.jpg/330px-Gemeine_Heidelibelle_%28Sympetrum_vulgatum%29_4.jpg">
         </div>
         <hr class="solid">
-        <hr class="solid">
         <h2>Cars</h2>    
         <div>
         <img class="medium-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/BMW_sixth-generation_7Series_in_Tokyo-MotorShow_2015.jpg/480px-BMW_sixth-generation_7Series_in_Tokyo-MotorShow_2015.jpg">
