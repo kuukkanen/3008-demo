@@ -285,9 +285,11 @@ void main() {
       gl.enableVertexAttribArray(2);
       gl.vertexAttribPointer(2, 3, gl.FLOAT, false, 8 * 4, 5 * 4);
 
+      // Get uniform locations.
       const projectionLoc = gl.getUniformLocation(program, "projection");
       const cameraLoc = gl.getUniformLocation(program, "camera");
 
+      // Set projection matrix.
       gl.uniformMatrix4fv(
         projectionLoc,
         false,
@@ -295,12 +297,30 @@ void main() {
         perspective(1, gl.canvas.clientWidth / gl.canvas.clientHeight, 0.1, 10),
       );
 
+      // Set camera matrix.
       gl.uniformMatrix4fv(
         cameraLoc,
         false,
         lookAt([0.0, 0.25, 0.25], [0, 0, 0], [0, 1, 0]),
       );
 
+      canvas.onmousemove = ({ offsetX, offsetY }) => {
+        // Calculate reasonable [x, y] values.
+        const x = (offsetX / gl.canvas.clientWidth - 0.5) * 0.5;
+        const y = (offsetY / gl.canvas.clientHeight - 0.5) * 0.25;
+
+        // Set camera matrix when mouse is moved.
+        gl.uniformMatrix4fv(
+          cameraLoc,
+          false,
+          lookAt([x, 0.25 - y, 0.25], [0, 0, 0], [0, 1, 0]),
+        );
+
+        // Draw when mouse moved as the matrix has been updated.
+        draw();
+      };
+
+      // The amount of triangles.
       const triangles = obj.length / 3;
 
       // Replace the object drawing function.
