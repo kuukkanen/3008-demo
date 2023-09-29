@@ -16,7 +16,7 @@
         <img class="medium-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Gemeine_Heidelibelle_%28Sympetrum_vulgatum%29_4.jpg/330px-Gemeine_Heidelibelle_%28Sympetrum_vulgatum%29_4.jpg">
         </div>
         <hr class="solid">
-        <h2>Cars</h2>    
+        <h2>Cars</h2>
         <div>
         <img class="medium-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/BMW_sixth-generation_7Series_in_Tokyo-MotorShow_2015.jpg/480px-BMW_sixth-generation_7Series_in_Tokyo-MotorShow_2015.jpg">
         <img class="medium-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Bmw_328.jpg/557px-Bmw_328.jpg">
@@ -25,7 +25,6 @@
         <img class="medium-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Alfa_Romeo_33_1.3_VL_1991.jpg/375px-Alfa_Romeo_33_1.3_VL_1991.jpg">
         </div>
         <hr class="solid">`;
-  content = document.getElementById("content");
-  content.innerHTML = element;
-  return;
+  content = document.getElementById("content"); // eslint-disable-line
+  content.innerHTML = element; // eslint-disable-line
 })();
