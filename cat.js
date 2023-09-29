@@ -1,59 +1,60 @@
-// Very rudimentary Wavefront .obj file format loader.
-// Doesn't support many features but good enough for our use case.
-// https://en.wikipedia.org/wiki/Wavefront_.obj_file
-const loadObj = (content) => {
-  const positions = [];
-  const normals = [];
-  const textcoords = [];
-  const vertices = [];
+(function () {
+  // Very rudimentary Wavefront .obj file format loader.
+  // Doesn't support many features but good enough for our use case.
+  // https://en.wikipedia.org/wiki/Wavefront_.obj_file
+  const loadObj = (content) => {
+    const positions = [];
+    const normals = [];
+    const textcoords = [];
+    const vertices = [];
 
-  // Loop through every line.
-  content
-    .trim()
-    .split("\n")
-    .forEach((line) => {
-      const parts = line.split(" ");
-      switch (parts[0]) {
-        case "v":
-          // Position value. Map to number values from string values.
-          positions.push(parts.slice(1, 4).map((v) => Number(v)));
-          break;
+    // Loop through every line.
+    content
+      .trim()
+      .split("\n")
+      .forEach((line) => {
+        const parts = line.split(" ");
+        switch (parts[0]) {
+          case "v":
+            // Position value. Map to number values from string values.
+            positions.push(parts.slice(1, 4).map((v) => Number(v)));
+            break;
 
-        case "vn":
-          // Normal coordinate value. Map to number values from string values.
-          normals.push(parts.slice(1, 4).map((v) => Number(v)));
-          break;
+          case "vn":
+            // Normal coordinate value. Map to number values from string values.
+            normals.push(parts.slice(1, 4).map((v) => Number(v)));
+            break;
 
-        case "vt":
-          // Texture coordinate value. Map to number values from string values.
-          textcoords.push(parts.slice(1, 3).map((v) => Number(v)));
-          break;
+          case "vt":
+            // Texture coordinate value. Map to number values from string values.
+            textcoords.push(parts.slice(1, 3).map((v) => Number(v)));
+            break;
 
-        case "f":
-          // Triangle vertex value.
-          parts.slice(1, 4).map((v) => {
-            // Separate the values.
-            const parts = v.split("/").map((v) => Number(v));
+          case "f":
+            // Triangle vertex value.
+            parts.slice(1, 4).map((v) => {
+              // Separate the values.
+              const parts = v.split("/").map((v) => Number(v));
 
-            // Create a new vertex. With the given position, normal, and texture coordinate values.
-            vertices.push(
-              ...positions[parts[0] - 1],
-              ...textcoords[parts[1] - 1],
-              ...normals[parts[2] - 1],
-            );
-          });
-          break;
+              // Create a new vertex. With the given position, normal, and texture coordinate values.
+              vertices.push(
+                ...positions[parts[0] - 1],
+                ...textcoords[parts[1] - 1],
+                ...normals[parts[2] - 1],
+              );
+            });
+            break;
 
-        default:
-          console.error(`Unsupported syntax "${line}"`);
-          break;
-      }
-    });
+          default:
+            console.error(`Unsupported syntax "${line}"`);
+            break;
+        }
+      });
 
-  return vertices;
-};
+    return vertices;
+  };
 
-const vertexShaderSrc = `#version 300 es
+  const vertexShaderSrc = `#version 300 es
 
 layout(location = 0) in vec3 pos;
 
@@ -65,7 +66,7 @@ void main() {
 }
 `;
 
-const fragmentShaderSrc = `#version 300 es
+  const fragmentShaderSrc = `#version 300 es
 precision highp float;
 
 out vec4 color;
@@ -75,7 +76,6 @@ void main() {
 }
 `;
 
-(function () {
   // Create canvas for WebGL.
   const canvas = document.createElement("canvas");
 
@@ -139,7 +139,7 @@ void main() {
       // Buffer with the location data.
       const locationBuffer = gl.createBuffer();
       gl.bindBuffer(gl.ARRAY_BUFFER, locationBuffer);
-      gl.bufferData(gl.ARRAY_BUFFER, obj, gl.STATIC_DRAW);
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(obj), gl.STATIC_DRAW);
 
       // First location is the position values.
       gl.enableVertexAttribArray(0);
@@ -171,11 +171,11 @@ void main() {
         ];
       };
 
-      gl.uniformMatrix4fv(projectionLoc, false, perspective(3, 1, 0.1, 100));
+      gl.uniformMatrix4fv(projectionLoc, false, perspective(2, 1, 0.1, 100));
       gl.uniformMatrix4fv(
         viewLoc,
         false,
-        [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -20, -40, -20, 1],
+        [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -0.5, -0.5, 1],
       );
 
       const triangles = obj.length / 3;
