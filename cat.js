@@ -1,3 +1,58 @@
+// Very rudimentary Wavefront .obj file format loader.
+// Doesn't support many features but good enough for our use case.
+// https://en.wikipedia.org/wiki/Wavefront_.obj_file
+const loadObj = (content) => {
+  const positions = [];
+  const normals = [];
+  const textcoords = [];
+  const faces = [];
+
+  // Loop through every line.
+  content
+    .trim()
+    .split("\n")
+    .forEach((line) => {
+      const parts = line.split(" ");
+      switch (parts[0]) {
+        case "v":
+          // Position value. Map to number values from string values.
+          positions.push(parts.slice(1, 4).map((v) => Number(v)));
+          break;
+
+        case "vn":
+          // Normal coordinate value. Map to number values from string values.
+          normals.push(parts.slice(1, 4).map((v) => Number(v)));
+          break;
+
+        case "vt":
+          // Texture coordinate value. Map to number values from string values.
+          textcoords.push(parts.slice(1, 3).map((v) => Number(v)));
+          break;
+
+        case "f":
+          // Triangle face value.
+          parts.slice(1, 4).map((v) => {
+            // Separate the values.
+            const parts = v.split("/");
+
+            // Create a new face. With the given position, normal, and texture coordinate values.
+            faces.push({
+              pos: positions[parts[0]],
+              norm: normals[parts[1]],
+              tex: textcoords[parts[2]],
+            });
+          });
+          break;
+
+        default:
+          console.error(`Unsupported syntax "${line}"`);
+          break;
+      }
+    });
+
+  return faces;
+};
+
 (function () {
   // Create canvas for WebGL.
   const canvas = document.createElement("canvas");
@@ -9,6 +64,10 @@
   const gl = canvas.getContext("webgl2");
 
   content.appendChild(canvas); // eslint-disable-line
+
+  fetch("cat.obj")
+    .then((res) => res.text())
+    .then((content) => console.log(loadObj(content)));
 
   const draw = () => {
     // Clear canvas.
