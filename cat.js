@@ -54,6 +54,76 @@
     return vertices;
   };
 
+  // Perspective projection matrix.
+  const perspective = (fov, aspect, near, far) => {
+    const f = Math.tan(Math.PI * 0.5 - 0.5 * fov);
+    const inv = 1.0 / (near - far);
+    return [
+      f / aspect,
+      0,
+      0,
+      0,
+      0,
+      f,
+      0,
+      0,
+      0,
+      0,
+      (near + far) * inv,
+      -1,
+      0,
+      0,
+      near * far * inv * 2,
+      0,
+    ];
+  };
+
+  // Cross product.
+  const cross = (a, b) => [
+    a[1] * b[2] - a[2] * b[1],
+    a[2] * b[0] - a[0] * b[2],
+    a[0] * b[1] - a[1] * b[0],
+  ];
+
+  // Get the difference between vectors (subtraction).
+  const vecDiff = (a, b) => [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
+
+  // Normalize vector.
+  const normalize = (v) => {
+    const length = Math.sqrt(v[0] ** 2 + v[1] ** 2 + v[2] ** 2);
+    // Prevent division by zero.
+    return length > Number.EPSILON
+      ? [v[0] / length, v[1] / length, v[2] / length]
+      : [0, 0, 0];
+  };
+
+  // Camera "look at" matrix.
+  const lookAt = (pos, target, up) => {
+    // Get axis'.
+    const z = normalize(vecDiff(pos, target));
+    const x = normalize(cross(up, z));
+    const y = normalize(cross(z, x));
+
+    return [
+      x[0],
+      x[1],
+      x[2],
+      0,
+      y[0],
+      y[1],
+      y[2],
+      0,
+      z[0],
+      z[1],
+      z[2],
+      0,
+      pos[0],
+      pos[1],
+      pos[2],
+      1,
+    ];
+  };
+
   const vertexShaderSrc = `#version 300 es
 
 layout(location = 0) in vec3 pos;
@@ -193,6 +263,7 @@ void main() {
         );
         gl.generateMipmap(gl.TEXTURE_2D); // And generate mipmaps.
 
+        // Draw when image loaded.
         draw();
       };
       image.src = "cat.jpg";
@@ -217,74 +288,6 @@ void main() {
       const projectionLoc = gl.getUniformLocation(program, "projection");
       const cameraLoc = gl.getUniformLocation(program, "camera");
 
-      const perspective = (fov, aspect, near, far) => {
-        const f = Math.tan(Math.PI * 0.5 - 0.5 * fov);
-        const inv = 1.0 / (near - far);
-        return [
-          f / aspect,
-          0,
-          0,
-          0,
-          0,
-          f,
-          0,
-          0,
-          0,
-          0,
-          (near + far) * inv,
-          -1,
-          0,
-          0,
-          near * far * inv * 2,
-          0,
-        ];
-      };
-
-      // Cross product.
-      const cross = (a, b) => [
-        a[1] * b[2] - a[2] * b[1],
-        a[2] * b[0] - a[0] * b[2],
-        a[0] * b[1] - a[1] * b[0],
-      ];
-
-      // Get the difference between vectors (subtraction).
-      const diff = (a, b) => [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
-
-      // Normalize vector.
-      const normalize = (v) => {
-        const length = Math.sqrt(v[0] ** 2 + v[1] ** 2 + v[2] ** 2);
-        // Prevent division by zero.
-        return length > Number.EPSILON
-          ? [v[0] / length, v[1] / length, v[2] / length]
-          : [0, 0, 0];
-      };
-
-      const lookAt = (pos, target, up) => {
-        // Get axis'.
-        const z = normalize(diff(pos, target));
-        const x = normalize(cross(up, z));
-        const y = normalize(cross(z, x));
-
-        return [
-          x[0],
-          x[1],
-          x[2],
-          0,
-          y[0],
-          y[1],
-          y[2],
-          0,
-          z[0],
-          z[1],
-          z[2],
-          0,
-          pos[0],
-          pos[1],
-          pos[2],
-          1,
-        ];
-      };
-
       gl.uniformMatrix4fv(
         projectionLoc,
         false,
@@ -300,10 +303,15 @@ void main() {
 
       const triangles = obj.length / 3;
 
+      // Replace the object drawing function.
       drawObj = () => {
         gl.drawArrays(gl.TRIANGLES, 0, triangles);
       };
 
+      // Draw when object loaded.
       draw();
     });
+
+  // Draw when page load.
+  draw();
 })();
