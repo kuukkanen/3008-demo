@@ -57,11 +57,16 @@
   const vertexShaderSrc = `#version 300 es
 
 layout(location = 0) in vec3 pos;
+layout(location = 1) in vec2 tex;
+layout(location = 2) in vec3 norm;
 
 uniform mat4 projection;
 uniform mat4 view;
 
+out vec3 v_norm;
+
 void main() {
+  v_norm = normalize(norm);
   gl_Position = projection * view * vec4(pos, 1.0);
 }
 `;
@@ -69,10 +74,15 @@ void main() {
   const fragmentShaderSrc = `#version 300 es
 precision highp float;
 
+in vec3 v_norm;
+
 out vec4 color;
 
 void main() {
-  color = vec4(1.0);
+  vec3 ambient = vec3(0.1, 0.1, 0.2);
+  float light = dot(v_norm, vec3(1.0));
+  vec3 diffuse = vec3(1.0, 1.0, 0.9) * light;
+  color = vec4(ambient + diffuse, 1.0);
 }
 `;
 
@@ -116,6 +126,8 @@ void main() {
 
   gl.useProgram(program); // Enable the shader program.
 
+  gl.enable(gl.CULL_FACE); // Cull faces so they don't appear through the object.
+
   // No-op draw function at first and after object is loaded we implement this fully.
   let drawObj = () => {};
 
@@ -136,14 +148,22 @@ void main() {
     .then((content) => {
       const obj = loadObj(content);
 
-      // Buffer with the location data.
-      const locationBuffer = gl.createBuffer();
-      gl.bindBuffer(gl.ARRAY_BUFFER, locationBuffer);
+      // Buffer with the vertex data.
+      const buffer = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
       gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(obj), gl.STATIC_DRAW);
 
       // First location is the position values.
       gl.enableVertexAttribArray(0);
       gl.vertexAttribPointer(0, 3, gl.FLOAT, false, 8 * 4, 0);
+
+      // Second location is the texture coordinate values.
+      gl.enableVertexAttribArray(1);
+      gl.vertexAttribPointer(1, 2, gl.FLOAT, false, 8 * 4, 3 * 4);
+
+      // Third location is the normal values.
+      gl.enableVertexAttribArray(2);
+      gl.vertexAttribPointer(2, 3, gl.FLOAT, false, 8 * 4, 5 * 4);
 
       const projectionLoc = gl.getUniformLocation(program, "projection");
       const viewLoc = gl.getUniformLocation(program, "view");
@@ -171,11 +191,11 @@ void main() {
         ];
       };
 
-      gl.uniformMatrix4fv(projectionLoc, false, perspective(2, 1, 0.1, 100));
+      gl.uniformMatrix4fv(projectionLoc, false, perspective(2, 1, 0.1, 10));
       gl.uniformMatrix4fv(
         viewLoc,
         false,
-        [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -0.5, -0.5, 1],
+        [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -0.25, -0.5, 1],
       );
 
       const triangles = obj.length / 3;
