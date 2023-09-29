@@ -1,5 +1,5 @@
-(function() {
-    let element = `
+(function () {
+  let element = `
         <!-- Image Section: Animals -->
         <hr class="solid">
         <h2>Animals</h2>
@@ -25,7 +25,7 @@
         <img class="medium-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Alfa_Romeo_33_1.3_VL_1991.jpg/375px-Alfa_Romeo_33_1.3_VL_1991.jpg">
         </div>
         <hr class="solid">`;
-    content = document.getElementById("content");
-    content.innerHTML = element;
-    return;
+  content = document.getElementById("content");
+  content.innerHTML = element;
+  return;
 })();
