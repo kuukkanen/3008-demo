@@ -54,7 +54,7 @@ const loadObj = (content) => {
 };
 
 const vertexShaderSrc = `#version 300 es
-in vec3 pos;
+layout(location = 0) in vec3 pos;
 
 void main() {
   gl_Position = vec4(pos, 1.0);
@@ -83,10 +83,6 @@ void main() {
 
   content.appendChild(canvas); // eslint-disable-line
 
-  fetch("cat.obj")
-    .then((res) => res.text())
-    .then((content) => console.log(loadObj(content)));
-
   // Create the shader program.
   const createProgram = () => {
     // Create and compile vertex shader.
@@ -114,12 +110,42 @@ void main() {
 
   const program = createProgram();
 
+  gl.useProgram(program); // Enable the shader program.
+
+  // No-op draw function at first and after object is loaded we implement this fully.
+  let drawObj = () => {};
+
+  // The main draw function.
   const draw = () => {
     // Clear canvas.
     gl.clearColor(0, 0, 0, 1);
     gl.clear(gl.COLOR_BUFFER_BIT);
 
-    gl.useProgram(program);
+    drawObj();
   };
-  draw();
+
+  fetch("cat.obj")
+    .then((res) => res.text())
+    .then((content) => {
+      const obj = loadObj(content);
+
+      // Buffer with the location data.
+      const locationBuffer = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, locationBuffer);
+      gl.bufferData(
+        gl.ARRAY_BUFFER,
+        obj.map((face) => face.pos),
+        gl.STATIC_DRAW,
+      );
+
+      // First location is the position values.
+      gl.enableVertexAttribArray(0);
+      gl.vertexAttribPointer(0, 3, gl.FLOAT, false, 0, 0);
+
+      drawObj = () => {
+        gl.drawArrays(gl.TRIANGLES, 0, obj.length / 3);
+      };
+
+      draw();
+    });
 })();
