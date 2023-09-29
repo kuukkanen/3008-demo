@@ -217,7 +217,7 @@ void main() {
     gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
 
     // Clear canvas.
-    gl.clearColor(0, 0, 0, 1);
+    gl.clearColor(0.2, 0.3, 0.4, 1); // Blue background.
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
     drawObj();
