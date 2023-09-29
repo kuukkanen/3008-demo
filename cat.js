@@ -5,7 +5,7 @@ const loadObj = (content) => {
   const positions = [];
   const normals = [];
   const textcoords = [];
-  const faces = [];
+  const vertices = [];
 
   // Loop through every line.
   content
@@ -30,17 +30,17 @@ const loadObj = (content) => {
           break;
 
         case "f":
-          // Triangle face value.
+          // Triangle vertex value.
           parts.slice(1, 4).map((v) => {
             // Separate the values.
-            const parts = v.split("/");
+            const parts = v.split("/").map((v) => Number(v));
 
-            // Create a new face. With the given position, normal, and texture coordinate values.
-            faces.push({
-              pos: positions[parts[0]],
-              norm: normals[parts[1]],
-              tex: textcoords[parts[2]],
-            });
+            // Create a new vertex. With the given position, normal, and texture coordinate values.
+            vertices.push(
+              ...positions[parts[0] - 1],
+              ...textcoords[parts[1] - 1],
+              ...normals[parts[2] - 1],
+            );
           });
           break;
 
@@ -50,14 +50,18 @@ const loadObj = (content) => {
       }
     });
 
-  return faces;
+  return vertices;
 };
 
 const vertexShaderSrc = `#version 300 es
+
 layout(location = 0) in vec3 pos;
 
+uniform mat4 projection;
+uniform mat4 view;
+
 void main() {
-  gl_Position = vec4(pos, 1.0);
+  gl_Position = projection * view * vec4(pos, 1.0);
 }
 `;
 
@@ -117,6 +121,9 @@ void main() {
 
   // The main draw function.
   const draw = () => {
+    // Resize viewport.
+    gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
+
     // Clear canvas.
     gl.clearColor(0, 0, 0, 1);
     gl.clear(gl.COLOR_BUFFER_BIT);
@@ -132,18 +139,49 @@ void main() {
       // Buffer with the location data.
       const locationBuffer = gl.createBuffer();
       gl.bindBuffer(gl.ARRAY_BUFFER, locationBuffer);
-      gl.bufferData(
-        gl.ARRAY_BUFFER,
-        obj.map((face) => face.pos),
-        gl.STATIC_DRAW,
-      );
+      gl.bufferData(gl.ARRAY_BUFFER, obj, gl.STATIC_DRAW);
 
       // First location is the position values.
       gl.enableVertexAttribArray(0);
-      gl.vertexAttribPointer(0, 3, gl.FLOAT, false, 0, 0);
+      gl.vertexAttribPointer(0, 3, gl.FLOAT, false, 8 * 4, 0);
+
+      const projectionLoc = gl.getUniformLocation(program, "projection");
+      const viewLoc = gl.getUniformLocation(program, "view");
+
+      const perspective = (fov, aspect, near, far) => {
+        const f = Math.tan(Math.PI * 0.5 - 0.5 * fov);
+        const inv = 1.0 / (near - far);
+        return [
+          f / aspect,
+          0,
+          0,
+          0,
+          0,
+          f,
+          0,
+          0,
+          0,
+          0,
+          (near + far) * inv,
+          -1,
+          0,
+          0,
+          near * far * inv * 2,
+          0,
+        ];
+      };
+
+      gl.uniformMatrix4fv(projectionLoc, false, perspective(3, 1, 0.1, 100));
+      gl.uniformMatrix4fv(
+        viewLoc,
+        false,
+        [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -20, -40, -20, 1],
+      );
+
+      const triangles = obj.length / 3;
 
       drawObj = () => {
-        gl.drawArrays(gl.TRIANGLES, 0, obj.length / 3);
+        gl.drawArrays(gl.TRIANGLES, 0, triangles);
       };
 
       draw();
