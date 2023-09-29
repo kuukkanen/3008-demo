@@ -61,7 +61,7 @@ layout(location = 1) in vec2 tex;
 layout(location = 2) in vec3 norm;
 
 uniform mat4 projection;
-uniform mat4 view;
+uniform mat4 camera;
 
 out vec2 v_tex;
 out vec3 v_norm;
@@ -69,7 +69,7 @@ out vec3 v_norm;
 void main() {
   v_tex = tex;
   v_norm = normalize(norm);
-  gl_Position = projection * view * vec4(pos, 1.0);
+  gl_Position = projection * inverse(camera) * vec4(pos, 1.0);
 }
 `;
 
@@ -148,7 +148,7 @@ void main() {
 
     // Clear canvas.
     gl.clearColor(0, 0, 0, 1);
-    gl.clear(gl.COLOR_BUFFER_BIT);
+    gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
     drawObj();
   };
@@ -215,7 +215,7 @@ void main() {
       gl.vertexAttribPointer(2, 3, gl.FLOAT, false, 8 * 4, 5 * 4);
 
       const projectionLoc = gl.getUniformLocation(program, "projection");
-      const viewLoc = gl.getUniformLocation(program, "view");
+      const cameraLoc = gl.getUniformLocation(program, "camera");
 
       const perspective = (fov, aspect, near, far) => {
         const f = Math.tan(Math.PI * 0.5 - 0.5 * fov);
@@ -240,11 +240,62 @@ void main() {
         ];
       };
 
-      gl.uniformMatrix4fv(projectionLoc, false, perspective(2, 1, 0.1, 10));
+      // Cross product.
+      const cross = (a, b) => [
+        a[1] * b[2] - a[2] * b[1],
+        a[2] * b[0] - a[0] * b[2],
+        a[0] * b[1] - a[1] * b[0],
+      ];
+
+      // Get the difference between vectors (subtraction).
+      const diff = (a, b) => [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
+
+      // Normalize vector.
+      const normalize = (v) => {
+        const length = Math.sqrt(v[0] ** 2 + v[1] ** 2 + v[2] ** 2);
+        // Prevent division by zero.
+        return length > Number.EPSILON
+          ? [v[0] / length, v[1] / length, v[2] / length]
+          : [0, 0, 0];
+      };
+
+      const lookAt = (pos, target, up) => {
+        // Get axis'.
+        const z = normalize(diff(pos, target));
+        const x = normalize(cross(up, z));
+        const y = normalize(cross(z, x));
+
+        return [
+          x[0],
+          x[1],
+          x[2],
+          0,
+          y[0],
+          y[1],
+          y[2],
+          0,
+          z[0],
+          z[1],
+          z[2],
+          0,
+          pos[0],
+          pos[1],
+          pos[2],
+          1,
+        ];
+      };
+
       gl.uniformMatrix4fv(
-        viewLoc,
+        projectionLoc,
         false,
-        [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -0.2, -0.2, 1],
+        // Calculate aspect ratio from the canvas size.
+        perspective(1, gl.canvas.clientWidth / gl.canvas.clientHeight, 0.1, 10),
+      );
+
+      gl.uniformMatrix4fv(
+        cameraLoc,
+        false,
+        lookAt([0.0, 0.25, 0.25], [0, 0, 0], [0, 1, 0]),
       );
 
       const triangles = obj.length / 3;
