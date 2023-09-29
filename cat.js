@@ -53,6 +53,24 @@ const loadObj = (content) => {
   return faces;
 };
 
+const vertexShaderSrc = `#version 300 es
+in vec3 pos;
+
+void main() {
+  gl_Position = vec4(pos, 1.0);
+}
+`;
+
+const fragmentShaderSrc = `#version 300 es
+precision highp float;
+
+out vec4 color;
+
+void main() {
+  color = vec4(1.0);
+}
+`;
+
 (function () {
   // Create canvas for WebGL.
   const canvas = document.createElement("canvas");
@@ -69,10 +87,39 @@ const loadObj = (content) => {
     .then((res) => res.text())
     .then((content) => console.log(loadObj(content)));
 
+  // Create the shader program.
+  const createProgram = () => {
+    // Create and compile vertex shader.
+    const vertexShader = gl.createShader(gl.VERTEX_SHADER);
+    gl.shaderSource(vertexShader, vertexShaderSrc);
+    gl.compileShader(vertexShader);
+
+    // Create and compile fragment shader.
+    const fragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
+    gl.shaderSource(fragmentShader, fragmentShaderSrc);
+    gl.compileShader(fragmentShader);
+
+    // Create and link the program.
+    const program = gl.createProgram();
+    gl.attachShader(program, vertexShader);
+    gl.attachShader(program, fragmentShader);
+    gl.linkProgram(program);
+
+    // Shaders are no longer needed.
+    gl.deleteShader(vertexShader);
+    gl.deleteShader(fragmentShader);
+
+    return program;
+  };
+
+  const program = createProgram();
+
   const draw = () => {
     // Clear canvas.
     gl.clearColor(0, 0, 0, 1);
     gl.clear(gl.COLOR_BUFFER_BIT);
+
+    gl.useProgram(program);
   };
   draw();
 })();
