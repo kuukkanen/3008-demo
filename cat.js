@@ -63,9 +63,11 @@ layout(location = 2) in vec3 norm;
 uniform mat4 projection;
 uniform mat4 view;
 
+out vec2 v_tex;
 out vec3 v_norm;
 
 void main() {
+  v_tex = tex;
   v_norm = normalize(norm);
   gl_Position = projection * view * vec4(pos, 1.0);
 }
@@ -74,7 +76,10 @@ void main() {
   const fragmentShaderSrc = `#version 300 es
 precision highp float;
 
+in vec2 v_tex;
 in vec3 v_norm;
+
+uniform sampler2D tex;
 
 out vec4 color;
 
@@ -82,7 +87,11 @@ void main() {
   vec3 ambient = vec3(0.1, 0.1, 0.2);
   float light = dot(v_norm, vec3(1.0));
   vec3 diffuse = vec3(1.0, 1.0, 0.9) * light;
-  color = vec4(ambient + diffuse, 1.0);
+
+  color.rgb = texture(tex, v_tex).rgb;
+  color.a = 1.0;
+
+  //color = vec4(ambient + diffuse, 1.0);
 }
 `;
 
@@ -126,7 +135,8 @@ void main() {
 
   gl.useProgram(program); // Enable the shader program.
 
-  gl.enable(gl.CULL_FACE); // Cull faces so they don't appear through the object.
+  gl.enable(gl.CULL_FACE); // Cull faces so they don't appear from the wrong side.
+  gl.enable(gl.DEPTH_TEST); // Depth testing so vertices don't shine through each other.
 
   // No-op draw function at first and after object is loaded we implement this fully.
   let drawObj = () => {};
@@ -147,6 +157,45 @@ void main() {
     .then((res) => res.text())
     .then((content) => {
       const obj = loadObj(content);
+
+      // Use the first texture as the texture in the shader.
+      gl.uniform1i(gl.getUniformLocation(program, "tex"), 0);
+
+      // Create texture.
+      const texture = gl.createTexture();
+      gl.activeTexture(gl.TEXTURE0);
+      gl.bindTexture(gl.TEXTURE_2D, texture);
+
+      // Use white texture by default.
+      gl.texImage2D(
+        gl.TEXTURE_2D,
+        0,
+        gl.RGB,
+        1,
+        1,
+        0,
+        gl.RGB,
+        gl.UNSIGNED_BYTE,
+        new Uint8Array([255, 255, 255]), // White pixel.
+      );
+
+      // Load the texture image.
+      const image = new Image();
+      image.onload = () => {
+        // Set the loaded date to the texture.
+        gl.texImage2D(
+          gl.TEXTURE_2D,
+          0,
+          gl.RGB,
+          gl.RGB,
+          gl.UNSIGNED_BYTE,
+          image,
+        );
+        gl.generateMipmap(gl.TEXTURE_2D); // And generate mipmaps.
+
+        draw();
+      };
+      image.src = "cat.jpg";
 
       // Buffer with the vertex data.
       const buffer = gl.createBuffer();
@@ -195,7 +244,7 @@ void main() {
       gl.uniformMatrix4fv(
         viewLoc,
         false,
-        [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -0.25, -0.5, 1],
+        [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -0.2, -0.2, 1],
       );
 
       const triangles = obj.length / 3;
