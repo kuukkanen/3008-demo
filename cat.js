@@ -99,7 +99,7 @@
 
   // Camera "look at" matrix.
   const lookAt = (pos, target, up) => {
-    // Get axis'.
+    // Get axes.
     const z = normalize(vecDiff(pos, target));
     const x = normalize(cross(up, z));
     const y = normalize(cross(z, x));
@@ -154,14 +154,16 @@ uniform sampler2D tex;
 out vec4 color;
 
 void main() {
-  vec3 ambient = vec3(0.1, 0.1, 0.2);
+  vec3 ambient = vec3(0.2, 0.2, 0.3);
   float light = dot(v_norm, vec3(1.0));
-  vec3 diffuse = vec3(1.0, 1.0, 0.9) * light;
+  vec3 diffuse = vec3(0.8, 0.8, 0.7) * light;
 
-  color.rgb = texture(tex, v_tex).rgb;
+  color.rgb = texture(tex, v_tex).rgb * (ambient + diffuse);
+
+  float gamma = 2.2;
+  color.rgb = pow(color.rgb, vec3(1.0 / gamma));
+
   color.a = 1.0;
-
-  //color = vec4(ambient + diffuse, 1.0);
 }
 `;
 
@@ -256,12 +258,13 @@ void main() {
         gl.texImage2D(
           gl.TEXTURE_2D,
           0,
-          gl.RGB,
+          gl.SRGB8,
           gl.RGB,
           gl.UNSIGNED_BYTE,
           image,
         );
-        gl.generateMipmap(gl.TEXTURE_2D); // And generate mipmaps.
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
 
         // Draw when image loaded.
         draw();
