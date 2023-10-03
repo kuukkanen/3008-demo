@@ -11,8 +11,7 @@
   h1.innerHTML = "Dad Jokes";
 
   const jokeText = document.createElement("p");
-  jokeText.innerHTML =
-    "What do you call a magician who has lost their magic? Ian.";
+  jokeText.innerHTML = "Loading...";
 
   content.appendChild(div);
   div.appendChild(h1);
