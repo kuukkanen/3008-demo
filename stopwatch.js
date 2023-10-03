@@ -1,6 +1,6 @@
 (function () {
 
-  let element = `<div class="wrapper">
+  let element = `<div class="stopwatch">
                 <h1>Stopwatch</h1>
                 <div id="stopwatch">0:00.0</div>
                 <button id="startStopButton">Start</button>
