@@ -85,6 +85,13 @@ main {
   margin: auto;
   text-align: center;
   padding: 2em;
+  color: white;
+  border-radius: 5px;
+}
+
+#stopwatch {
+  font-size: 5em;
+
 }
 
 #startStopButton {
