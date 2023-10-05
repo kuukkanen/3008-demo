@@ -42,6 +42,18 @@
       );
       ctx.fill();
     },
+    get top() {
+      return this.y - this.height / 2;
+    },
+    get bottom() {
+      return this.y + this.height / 2;
+    },
+    get left() {
+      return this.x - this.width / 2;
+    },
+    get right() {
+      return this.x + this.width / 2;
+    },
   };
 
   const ball = {
@@ -73,21 +85,21 @@
       this.x += (this.dx / len) * this.speed;
 
       // Collision to the screen edges.
-      if (this.y + this.radius >= canvas.height) {
+      if (this.bottom >= canvas.height) {
         // Bottom of the screen.
         this.reset();
       }
-      if (this.y - this.radius <= 0) {
+      if (this.top <= 0) {
         // Top of the screen.
         this.dy = -this.dy;
         this.y = this.radius;
       }
-      if (this.x + this.radius >= canvas.width) {
+      if (this.right >= canvas.width) {
         // Right of the screen.
         this.dx = -this.dx;
         this.x = canvas.width - this.radius;
       }
-      if (this.x - this.radius <= 0) {
+      if (this.left <= 0) {
         // Left of the screen.
         this.dx = -this.dx;
         this.x = this.radius;
@@ -97,46 +109,43 @@
       switch (this.blockCollision(paddle)) {
         case 1: // Top.
           this.dy = -this.dy;
-          this.y = paddle.y - paddle.height / 2 - this.radius;
+          this.y = paddle.top - this.radius;
           break;
         case 2: // Right.
           this.dx = -this.dx;
-          this.x = paddle.x + paddle.width / 2 + this.radius;
+          this.x = paddle.right + this.radius;
           break;
         case 3: // Bottom.
           this.dy = -this.dy;
-          this.y = paddle.y + paddle.height / 2 + this.radius;
+          this.y = paddle.bottom + this.radius;
           break;
         case 4: // Left.
           this.dx = -this.dx;
-          this.x = paddle.x - paddle.width / 2 - this.radius;
+          this.x = paddle.left - this.radius;
           break;
       }
     },
     // Collision with a block.
     blockCollision(block) {
       let x = this.x;
-      if (this.x < block.x - block.width / 2) {
-        x = block.x - block.width / 2; // Left edge of the block.
-      } else if (this.x > block.x + block.width / 2) {
-        x = block.x + block.width / 2; // Right edge of the block.
+      if (this.x < block.left) {
+        x = block.left; // Left edge of the block.
+      } else if (this.x > block.right) {
+        x = block.right; // Right edge of the block.
       }
 
       let y = this.y;
-      if (this.y < block.y - block.height / 2) {
-        y = block.y - block.height / 2; // Top edge of the block.
-      } else if (this.y > block.y + block.height / 2) {
-        y = block.y + block.height / 2; // Bottom edge of the block.
+      if (this.y < block.top) {
+        y = block.top; // Top edge of the block.
+      } else if (this.y > block.bottom) {
+        y = block.bottom; // Bottom edge of the block.
       }
 
       // Get the distance from the ball to the block.
       const dist = Math.sqrt((this.x - x) ** 2 + (this.y - y) ** 2);
       if (dist <= this.radius) {
         // Collision detected, check the side.
-        if (
-          this.y >= block.y - block.height / 2 &&
-          this.y <= block.y + block.height / 2
-        ) {
+        if (this.y >= block.top && this.y <= block.bottom) {
           // X-axis.
           if (this.x <= block.x) {
             return 4;
@@ -145,10 +154,7 @@
             return 2;
           }
         }
-        if (
-          this.x >= block.x - block.width / 2 &&
-          this.x <= block.x + block.width / 2
-        ) {
+        if (this.x >= block.left && this.x <= block.right) {
           // Y-axis.
           if (this.y <= block.y) {
             return 1;
@@ -160,6 +166,18 @@
       }
 
       return 0;
+    },
+    get top() {
+      return this.y - this.radius;
+    },
+    get bottom() {
+      return this.y + this.radius;
+    },
+    get left() {
+      return this.x - this.radius;
+    },
+    get right() {
+      return this.x + this.radius;
     },
   };
 
