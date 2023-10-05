@@ -8,6 +8,8 @@ function main() {
   const defaultHash = new URL(buttons[0].href).hash;
   // Get the content container.
   content = document.getElementById("content");
+  // Get the title heading.
+  const title = document.getElementById("title");
 
   function updateActive() {
     let hasActive = false;
@@ -24,6 +26,10 @@ function main() {
       if (hash === currentHash) {
         // If active is found set `hasActive` to true.
         hasActive = true;
+
+        // Change the title.
+        document.title = `3008 Demo | ${button.innerText}`;
+        title.innerText = document.title;
 
         content.innerHTML = ""; // Clear content.
 
