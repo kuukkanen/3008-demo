@@ -31,14 +31,26 @@
     y: canvas.height - 50,
     width: 100,
     height: 20,
+    roundness: 5,
     draw() {
-      ctx.fillStyle = "lightgray";
+      // Create gradient for the paddle.
+      const gradient = ctx.createLinearGradient(
+        this.x,
+        this.top,
+        this.x,
+        this.bottom,
+      );
+      gradient.addColorStop(0, "plum");
+      gradient.addColorStop(1, "darkslateblue");
+      ctx.fillStyle = gradient;
+
       ctx.beginPath();
-      ctx.rect(
+      ctx.roundRect(
         this.x - this.width / 2,
         this.y - this.height / 2,
         this.width,
         this.height,
+        this.roundness,
       );
       ctx.fill();
     },
@@ -54,6 +66,13 @@
     get right() {
       return this.x + this.width / 2;
     },
+    move(x) {
+      // Move the paddle and clamp to screen edges.
+      paddle.x = Math.max(
+        paddle.width / 2,
+        Math.min(x, canvas.width - paddle.width / 2),
+      );
+    },
   };
 
   const ball = {
@@ -63,9 +82,29 @@
     dx: 1,
     dy: 1,
     speed: 5,
+    ghosts: [],
+    maxGhosts: 10,
     draw() {
+      // Draw ghost images.
+      for (let i = 0; i < this.ghosts.length; i++) {
+        ctx.fillStyle = "palevioletred";
+        ctx.globalAlpha = i / this.ghosts.length; // Fade the older ones.
+        ctx.beginPath();
+        ctx.ellipse(
+          this.ghosts[i].x,
+          this.ghosts[i].y,
+          this.radius,
+          this.radius,
+          0,
+          0,
+          Math.PI * 2,
+        );
+        ctx.fill();
+      }
+
       // Draw the white ball.
       ctx.fillStyle = "white";
+      ctx.globalAlpha = 1;
       ctx.beginPath();
       ctx.ellipse(this.x, this.y, this.radius, this.radius, 0, 0, Math.PI * 2);
       ctx.fill();
@@ -78,6 +117,13 @@
       this.y = canvas.height / 2;
     },
     update() {
+      // Add ghost image before moving.
+      this.ghosts.push({ x: this.x, y: this.y });
+      if (this.ghosts.length > this.maxGhosts) {
+        // Remove the oldes one.
+        this.ghosts.splice(1, 1);
+      }
+
       // Calculate vector length for the direction.
       const len = Math.sqrt(this.dx ** 2 + this.dy ** 2);
       // Move to the direction using the normalized values.
@@ -88,18 +134,15 @@
       if (this.bottom >= canvas.height) {
         // Bottom of the screen.
         this.reset();
-      }
-      if (this.top <= 0) {
+      } else if (this.top <= 0) {
         // Top of the screen.
         this.dy = -this.dy;
         this.y = this.radius;
-      }
-      if (this.right >= canvas.width) {
+      } else if (this.right >= canvas.width) {
         // Right of the screen.
         this.dx = -this.dx;
         this.x = canvas.width - this.radius;
-      }
-      if (this.left <= 0) {
+      } else if (this.left <= 0) {
         // Left of the screen.
         this.dx = -this.dx;
         this.x = this.radius;
@@ -148,23 +191,24 @@
         if (this.y >= block.top && this.y <= block.bottom) {
           // X-axis.
           if (this.x <= block.x) {
-            return 4;
+            return 4; // Left.
           }
           if (this.x >= block.x) {
-            return 2;
+            return 2; // Right.
           }
         }
         if (this.x >= block.left && this.x <= block.right) {
           // Y-axis.
           if (this.y <= block.y) {
-            return 1;
+            return 1; // Top.
           }
           if (this.y >= block.y) {
-            return 3;
+            return 3; // Bottom.
           }
         }
       }
 
+      // No collision.
       return 0;
     },
     get top() {
@@ -182,11 +226,8 @@
   };
 
   canvas.addEventListener("mousemove", ({ offsetX }) => {
-    // Move the paddle with the mouse and clamp to screen edges.
-    paddle.x = Math.max(
-      paddle.width / 2,
-      Math.min(offsetX, canvas.width - paddle.width / 2),
-    );
+    // Move the paddle with the mouse.
+    paddle.move(offsetX);
   });
 
   const draw = () => {
