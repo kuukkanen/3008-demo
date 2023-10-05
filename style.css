@@ -27,23 +27,33 @@ main {
 
 /* Style the header "buttons". */
 .header a {
-  display: flex;
+  display: inline-flex;
   color: #f0f0f0;
   padding: 0.75rem;
   text-decoration: none;
   font-size: 1.5rem;
   border-radius: 4px;
+  vertical-align: middle;
 }
 
 .header a.logo {
   font-size: 1.5rem;
   font-weight: bold;
   padding: 0;
+  margin-right: 1rem;
 }
 
 /* Change the text color on mouse-over. */
 .header a:hover {
   color: #e5d283;
+}
+
+#title {
+  display: inline-block;
+  margin: 0;
+  font-size: 2rem;
+  color: #f0f0f0;
+  vertical-align: middle;
 }
 
 /* Style the active/current "button". */
