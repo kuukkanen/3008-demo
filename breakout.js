@@ -233,7 +233,8 @@
   const draw = () => {
     ball.update(); // Move the ball.
 
-    ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the screen each frame.
+    ctx.fillStyle = "#101046";
+    ctx.fillRect(0, 0, canvas.width, canvas.height); // Clear the screen each frame.
 
     ball.draw(); // Draw the ball.
     paddle.draw(); // Draw the paddle.
