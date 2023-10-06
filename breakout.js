@@ -147,11 +147,12 @@
     y: canvas.height / 2,
     radius: 10,
     dx: 1,
-    dy: 1,
+    dy: -1,
     speed: 300,
     ghosts: [],
     maxGhosts: 10,
     prevTime: new Date(),
+    paused: true,
     draw() {
       // Draw ghost images.
       for (let i = 0; i < this.ghosts.length; i++) {
@@ -179,10 +180,9 @@
     },
     reset() {
       // Reset the game.
-      this.dy = 1;
-      this.dx = 1;
-      this.x = canvas.width / 2;
-      this.y = canvas.height / 2;
+      this.paused = true;
+      this.moveToPaddle();
+      this.dy = -1;
     },
     update() {
       const curTime = new Date();
@@ -195,6 +195,9 @@
         // Remove the oldes one.
         this.ghosts.splice(1, 1);
       }
+
+      // Don't update when paused.
+      if (this.paused) return;
 
       // Calculate vector length for the direction.
       const len = Math.sqrt(this.dx ** 2 + this.dy ** 2);
@@ -323,11 +326,28 @@
     get right() {
       return this.x + this.radius;
     },
+    moveToPaddle() {
+      // Move the ball to the paddle's position.
+      this.x = paddle.x;
+      this.y = paddle.top - this.radius;
+    },
   };
+
+  ball.moveToPaddle();
 
   canvas.addEventListener("mousemove", ({ offsetX }) => {
     // Move the paddle with the mouse.
     paddle.move(offsetX);
+    // Move ball to the paddle when paused.
+    if (ball.paused) ball.moveToPaddle();
+  });
+
+  canvas.addEventListener("mouseup", () => {
+    if (ball.paused) {
+      // Start moving the ball to the center of the screen.
+      ball.dx = ball.x >= canvas.width / 2 ? -1 : 1;
+      ball.paused = false;
+    }
   });
 
   const draw = () => {
