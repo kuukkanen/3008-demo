@@ -265,7 +265,7 @@
             return;
         }
         bricks.splice(i, 1);
-        score++; // Got a point.
+        score += 100; // Got a point.
       });
     },
     // Collision with a block.
@@ -341,8 +341,8 @@
     paddle.draw(); // Draw the paddle.
 
     ctx.fillStyle = "white";
-    ctx.font = "20px monospace";
-    ctx.fillText(`Score: ${score}`, 10, 25);
+    ctx.font = "900 20px monospace";
+    ctx.fillText(`Score: ${String(score).padStart(4, "0")}`, 10, 25);
 
     // Next frame while the game is running.
     if (isRunning) window.requestAnimationFrame(draw);
