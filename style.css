@@ -107,3 +107,40 @@ hr.solid {
     flex-direction: row;
   }
 }
+
+.stopwatch {
+  color: white;
+  background-color: #4f709c;
+  width: 50%;
+  display: block;
+  align-items: center;
+  margin: auto;
+  text-align: center;
+  padding: 2em;
+}
+
+.stopwatch h1 {
+  font-size: 3em;
+}
+
+
+#stopwatch {
+  font-size: 5em;
+
+}
+
+#startStopButton {
+  font-size: 1.5em;
+  padding: 0.5em;
+  padding: 0.5em 2em 0.5em 2em;
+  margin: 1em;
+  border-radius: 5px;
+}
+
+#resetButton {
+  font-size: 1.5em;
+  padding: 0.5em;
+  padding: 0.5em 2em 0.5em 2em;
+  margin: 1em;
+  border-radius: 5px;
+}
