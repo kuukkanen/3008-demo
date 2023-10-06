@@ -26,6 +26,8 @@
   // Observer DOM changes.
   observer.observe(content, { childList: true }); // eslint-disable-line
 
+  let score = 0;
+
   const paddle = {
     x: canvas.width / 2,
     y: canvas.height - 50,
@@ -197,6 +199,8 @@
       if (this.bottom >= canvas.height) {
         // Bottom of the screen.
         this.reset();
+        bricks.generate(); // Start a new game.
+        score = 0; // Reset the score.
       } else if (this.top <= 0) {
         // Top of the screen.
         this.dy = -this.dy;
@@ -254,6 +258,7 @@
             return;
         }
         bricks.splice(i, 1);
+        score++; // Got a point.
       });
     },
     // Collision with a block.
@@ -327,6 +332,10 @@
     ball.draw(); // Draw the ball.
     bricks.draw(); // Draw all bricks.
     paddle.draw(); // Draw the paddle.
+
+    ctx.fillStyle = "white";
+    ctx.font = "20px monospace";
+    ctx.fillText(`Score: ${score}`, 10, 25);
 
     // Next frame while the game is running.
     if (isRunning) window.requestAnimationFrame(draw);
