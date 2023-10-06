@@ -5,6 +5,8 @@
   // Reasonable size.
   canvas.width = 640;
   canvas.height = 480;
+  canvas.style.borderRadius = "10px";
+  canvas.style.boxShadow = "10px 10px 10px rgba(0,0,0,0.5)";
 
   // Get the drawing context.
   const ctx = canvas.getContext("2d", { alpha: false });
