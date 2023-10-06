@@ -75,12 +75,13 @@
     },
   };
 
-  function Brick(x, y) {
+  function Brick(x, y, color) {
     this.x = x;
     this.y = y;
     this.width = 100;
     this.height = 20;
     this.roundness = 5;
+    this.color = color;
   }
 
   Brick.prototype = {
@@ -98,15 +99,11 @@
     },
   };
 
-  const bricks = [
-    new Brick(100, 100),
-    new Brick(300, 100),
-    new Brick(500, 100),
-  ];
+  const bricks = [];
 
   bricks.draw = function () {
     this.forEach((brick) => {
-      ctx.fillStyle = "red";
+      ctx.fillStyle = brick.color;
       ctx.beginPath();
       ctx.roundRect(
         brick.x - brick.width / 2,
@@ -118,6 +115,28 @@
       ctx.fill();
     });
   };
+
+  // Generate new bricks.
+  bricks.generate = function () {
+    bricks.splice(0, bricks.length);
+
+    const horBricks = 5; // Bricks in the X-axis.
+    const verBricks = 4; // Bricks in the Y-axis.
+    const colors = ["salmon", "lawngreen", "deepskyblue", "khaki"]; // Colors for the bricks on the Y-axis.
+
+    for (let y = 0; y < verBricks; y++) {
+      for (let x = 0; x < horBricks; x++) {
+        bricks.push(
+          new Brick(
+            (x * canvas.width) / horBricks + (canvas.width / horBricks) * 0.5,
+            y * 20 * 2 + 20 * 3,
+            colors[y],
+          ),
+        );
+      }
+    }
+  };
+  bricks.generate();
 
   const ball = {
     x: canvas.width / 2,
