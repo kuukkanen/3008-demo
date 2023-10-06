@@ -75,6 +75,50 @@
     },
   };
 
+  function Brick(x, y) {
+    this.x = x;
+    this.y = y;
+    this.width = 100;
+    this.height = 20;
+    this.roundness = 5;
+  }
+
+  Brick.prototype = {
+    get top() {
+      return this.y - this.height / 2;
+    },
+    get bottom() {
+      return this.y + this.height / 2;
+    },
+    get left() {
+      return this.x - this.width / 2;
+    },
+    get right() {
+      return this.x + this.width / 2;
+    },
+  };
+
+  const bricks = [
+    new Brick(100, 100),
+    new Brick(300, 100),
+    new Brick(500, 100),
+  ];
+
+  bricks.draw = function () {
+    this.forEach((brick) => {
+      ctx.fillStyle = "red";
+      ctx.beginPath();
+      ctx.roundRect(
+        brick.x - brick.width / 2,
+        brick.y - brick.height / 2,
+        brick.width,
+        brick.height,
+        brick.roundness,
+      );
+      ctx.fill();
+    });
+  };
+
   const ball = {
     x: canvas.width / 2,
     y: canvas.height / 2,
@@ -167,6 +211,31 @@
           this.x = paddle.left - this.radius;
           break;
       }
+
+      // Collide to the bricks.
+      bricks.forEach((brick, i) => {
+        switch (this.blockCollision(brick)) {
+          case 1: // Top.
+            this.dy = -this.dy;
+            this.y = brick.top - this.radius;
+            break;
+          case 2: // Right.
+            this.dx = -this.dx;
+            this.x = brick.right + this.radius;
+            break;
+          case 3: // Bottom.
+            this.dy = -this.dy;
+            this.y = brick.bottom + this.radius;
+            break;
+          case 4: // Left.
+            this.dx = -this.dx;
+            this.x = brick.left - this.radius;
+            break;
+          default:
+            return;
+        }
+        bricks.splice(i, 1);
+      });
     },
     // Collision with a block.
     blockCollision(block) {
@@ -237,6 +306,7 @@
     ctx.fillRect(0, 0, canvas.width, canvas.height); // Clear the screen each frame.
 
     ball.draw(); // Draw the ball.
+    bricks.draw(); // Draw all bricks.
     paddle.draw(); // Draw the paddle.
 
     // Next frame while the game is running.
