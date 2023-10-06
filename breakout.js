@@ -146,9 +146,10 @@
     radius: 10,
     dx: 1,
     dy: 1,
-    speed: 5,
+    speed: 300,
     ghosts: [],
     maxGhosts: 10,
+    prevTime: new Date(),
     draw() {
       // Draw ghost images.
       for (let i = 0; i < this.ghosts.length; i++) {
@@ -182,6 +183,10 @@
       this.y = canvas.height / 2;
     },
     update() {
+      const curTime = new Date();
+      const dt = (curTime - this.prevTime) / 1000;
+      this.prevTime = curTime;
+
       // Add ghost image before moving.
       this.ghosts.push({ x: this.x, y: this.y });
       if (this.ghosts.length > this.maxGhosts) {
@@ -192,8 +197,8 @@
       // Calculate vector length for the direction.
       const len = Math.sqrt(this.dx ** 2 + this.dy ** 2);
       // Move to the direction using the normalized values.
-      this.y += (this.dy / len) * this.speed;
-      this.x += (this.dx / len) * this.speed;
+      this.y += (this.dy / len) * this.speed * dt;
+      this.x += (this.dx / len) * this.speed * dt;
 
       // Collision to the screen edges.
       if (this.bottom >= canvas.height) {
