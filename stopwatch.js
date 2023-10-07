@@ -1,7 +1,7 @@
 (function () {
   let element = `<div class="stopwatch">
                 <h1>Stopwatch</h1>
-                <div id="stopwatch">00:00.00</div>
+                <div id="stopwatch">00:00:00</div>
                 <button id="startStopButton">Start</button>
                 <button id="resetButton">Reset</button>
                 </div> `;
@@ -34,7 +34,7 @@
     running = true;
     startStopButton.textContent = "Stop";
     previousTime = Date.now();
-    intervalId = setInterval(updateDisplay, 100);
+    intervalId = setInterval(updateDisplay, 10);
   }
 
   function stop() {
@@ -59,7 +59,7 @@
     const displayTime = `${String(Math.floor(totalTime / 60000)).padStart(
       2,
       "0"
-    )}:${String(Math.floor((totalTime / 1000) % 60)).padStart(2, "0")}.${String(
+    )}:${String(Math.floor((totalTime / 1000) % 60)).padStart(2, "0")}:${String(
       Math.floor((totalTime % 1000) / 10)
     ).padStart(2, "0")}`;
     stopwatchDisplay.textContent = displayTime;
