@@ -8,6 +8,10 @@
   div.style.borderRadius = "5px";
 
   const button = document.createElement("button");
+  button.style.borderRadius = "0.5rem";
+  button.style.padding = "1rem";
+  button.style.fontSize = "1rem";
+  button.style.fontWeight = "bold";
   button.textContent = "New Joke";
 
   const h1 = document.createElement("h1");
