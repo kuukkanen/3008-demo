@@ -15,6 +15,8 @@
   button.textContent = "New Joke";
 
   const h1 = document.createElement("h1");
+  h1.style.color = "#ccc";
+  h1.style.textDecoration = "underline";
   h1.innerHTML = "Dad Jokes";
 
   const jokeText = document.createElement("p");
