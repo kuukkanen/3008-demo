@@ -3,6 +3,9 @@
   div.style.width = "450px";
   div.style.padding = "50px 20px";
   div.style.backgroundColor = "#FF0FF4";
+  div.style.justifyItems = "center";
+  div.style.textAlign = "center";
+  div.style.borderRadius = "5px";
 
   const button = document.createElement("button");
   button.textContent = "New Joke";
