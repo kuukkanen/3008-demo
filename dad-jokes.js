@@ -20,6 +20,9 @@
   h1.innerHTML = "Dad Jokes";
 
   const jokeText = document.createElement("p");
+  jokeText.style.fontSize = "1.8rem";
+  jokeText.style.margin = "30px";
+  jokeText.style.fontFamily = "monospace";
   jokeText.innerHTML = "Loading...";
 
   content.appendChild(div);
