@@ -155,13 +155,13 @@
     paused: true,
     draw() {
       // Draw ghost images.
-      for (let i = 0; i < this.ghosts.length; i++) {
+      for (const ghost of this.ghosts) {
         ctx.fillStyle = "palevioletred";
-        ctx.globalAlpha = i / this.ghosts.length; // Fade the older ones.
+        ctx.globalAlpha = ghost.time / 0.1; // Fade the older ones.
         ctx.beginPath();
         ctx.ellipse(
-          this.ghosts[i].x,
-          this.ghosts[i].y,
+          ghost.x,
+          ghost.y,
           this.radius,
           this.radius,
           0,
@@ -186,15 +186,16 @@
     },
     update() {
       const curTime = new Date();
-      const dt = (curTime - this.prevTime) / 1000;
+      const dt = (curTime - this.prevTime) / 1000; // Calculate deltatime.
       this.prevTime = curTime;
 
+      this.ghosts = this.ghosts
+        // Reduce time by deltatime for each ghost.
+        .map((ghost) => ({ ...ghost, time: ghost.time - dt }))
+        // Remove ghosts that have lived long enough.
+        .filter(({ time }) => time > 0.0);
       // Add ghost image before moving.
-      this.ghosts.push({ x: this.x, y: this.y });
-      if (this.ghosts.length > this.maxGhosts) {
-        // Remove the oldes one.
-        this.ghosts.splice(1, 1);
-      }
+      this.ghosts.push({ x: this.x, y: this.y, time: 0.1 });
 
       // Don't update when paused.
       if (this.paused) return;
