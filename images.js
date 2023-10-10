@@ -30,7 +30,8 @@
         <img class="medium-image" src="https://upload.wikimedia.org/wikipedia/en/4/46/Garfieldand_friends.png">
         <img class="medium-image" src="https://static.wikia.nocookie.net/garfield/images/7/79/Garfield_Ecxo.png/revision/latest?cb=20110924014029">               
         <img class="medium-image" src="https://static.wikia.nocookie.net/garfield/images/c/c8/Self_esteem_%2801%29.png/revision/latest/scale-to-width-down/180?cb=20130508201839">
-         
+        <img class="medium-image" src="https://m.media-amazon.com/images/M/MV5BNzg1MWU2YjEtNTI2Zi00NDU4LTkxNGEtYWFlNDk2YTM3YjFkXkEyXkFqcGdeQXVyODk1MjAxNzQ@._V1_.jpg">
+      
         
         
         `;
