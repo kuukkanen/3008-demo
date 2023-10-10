@@ -33,6 +33,9 @@
         <img class="medium-image" src="https://m.media-amazon.com/images/M/MV5BNzg1MWU2YjEtNTI2Zi00NDU4LTkxNGEtYWFlNDk2YTM3YjFkXkEyXkFqcGdeQXVyODk1MjAxNzQ@._V1_.jpg">
         <img class="medium-image" src="https://yt3.googleusercontent.com/ytc/APkrFKbQ7-BsYGRvZAtYGo27UtTZb51lf8pHc33Wa02CPg=s900-c-k-c0x00ffffff-no-rj">
         <img class="medium-image" src="https://static.independent.co.uk/s3fs-public/thumbnails/image/2018/06/19/09/garfield.jpg?width=1200&height=1200&fit=crop">
+
+        <img class="medium-image" src="https://avatar.amuniversal.com/feature_avatars/recommendation_images/features/ga/large_rec-201701251556.jpg">
+         
         <hr class="solid">`;
   content = document.getElementById("content"); // eslint-disable-line
   content.innerHTML = element; // eslint-disable-line
