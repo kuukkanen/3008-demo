@@ -24,7 +24,15 @@
         <img class="medium-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Audi_A8_2013_%2811209850785%29.jpg/375px-Audi_A8_2013_%2811209850785%29.jpg">
         <img class="medium-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Alfa_Romeo_33_1.3_VL_1991.jpg/375px-Alfa_Romeo_33_1.3_VL_1991.jpg">
         </div>
-        <hr class="solid">`;
+        <hr class="solid">
+        <h2>Garfield</h2>
+        <img class="medium-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/BMW_sixth-generation_7Series_in_Tokyo-MotorShow_2015.jpg/480px-BMW_sixth-generation_7Series_in_Tokyo-MotorShow_2015.jpg">
+        
+        
+        
+        
+        
+        `;
   content = document.getElementById("content"); // eslint-disable-line
   content.innerHTML = element; // eslint-disable-line
 })();
