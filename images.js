@@ -31,6 +31,7 @@
         <img class="medium-image" src="https://static.wikia.nocookie.net/garfield/images/7/79/Garfield_Ecxo.png/revision/latest?cb=20110924014029">               
         <img class="medium-image" src="https://static.wikia.nocookie.net/garfield/images/c/c8/Self_esteem_%2801%29.png/revision/latest/scale-to-width-down/180?cb=20130508201839">
         <img class="medium-image" src="https://m.media-amazon.com/images/M/MV5BNzg1MWU2YjEtNTI2Zi00NDU4LTkxNGEtYWFlNDk2YTM3YjFkXkEyXkFqcGdeQXVyODk1MjAxNzQ@._V1_.jpg">
+        <img class="medium-image" src="https://yt3.googleusercontent.com/ytc/APkrFKbQ7-BsYGRvZAtYGo27UtTZb51lf8pHc33Wa02CPg=s900-c-k-c0x00ffffff-no-rj">
         <hr class="solid">`;
   content = document.getElementById("content"); // eslint-disable-line
   content.innerHTML = element; // eslint-disable-line
