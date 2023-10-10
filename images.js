@@ -32,6 +32,7 @@
         <img class="medium-image" src="https://static.wikia.nocookie.net/garfield/images/c/c8/Self_esteem_%2801%29.png/revision/latest/scale-to-width-down/180?cb=20130508201839">
         <img class="medium-image" src="https://m.media-amazon.com/images/M/MV5BNzg1MWU2YjEtNTI2Zi00NDU4LTkxNGEtYWFlNDk2YTM3YjFkXkEyXkFqcGdeQXVyODk1MjAxNzQ@._V1_.jpg">
         <img class="medium-image" src="https://yt3.googleusercontent.com/ytc/APkrFKbQ7-BsYGRvZAtYGo27UtTZb51lf8pHc33Wa02CPg=s900-c-k-c0x00ffffff-no-rj">
+        <img class="medium-image" src="https://static.independent.co.uk/s3fs-public/thumbnails/image/2018/06/19/09/garfield.jpg?width=1200&height=1200&fit=crop">
         <hr class="solid">`;
   content = document.getElementById("content"); // eslint-disable-line
   content.innerHTML = element; // eslint-disable-line
