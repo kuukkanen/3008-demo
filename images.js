@@ -26,7 +26,9 @@
         </div>
         <hr class="solid">
         <h2>Garfield</h2>
-        <img class="medium-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/BMW_sixth-generation_7Series_in_Tokyo-MotorShow_2015.jpg/480px-BMW_sixth-generation_7Series_in_Tokyo-MotorShow_2015.jpg">
+        <img class="medium-image" src="https://upload.wikimedia.org/wikipedia/fi/thumb/4/43/Garfield.gif/375px-Garfield.gif">
+        <img class="medium-image" src="https://upload.wikimedia.org/wikipedia/en/4/46/Garfieldand_friends.png">
+         
         
         
         
