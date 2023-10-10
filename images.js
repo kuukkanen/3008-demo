@@ -28,9 +28,8 @@
         <h2>Garfield</h2>
         <img class="medium-image" src="https://upload.wikimedia.org/wikipedia/fi/thumb/4/43/Garfield.gif/375px-Garfield.gif">
         <img class="medium-image" src="https://upload.wikimedia.org/wikipedia/en/4/46/Garfieldand_friends.png">
-         
-        
-        
+        <img class="medium-image" src="https://static.wikia.nocookie.net/garfield/images/7/79/Garfield_Ecxo.png/revision/latest?cb=20110924014029">
+                
         
         
         
