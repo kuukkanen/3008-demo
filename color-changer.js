@@ -1,10 +1,6 @@
 (function () {
   // Create color changer button.
   const button = document.createElement("button");
-  button.style.borderRadius = "0.5rem";
-  button.style.padding = "1rem";
-  button.style.fontSize = "1rem";
-  button.style.fontWeight = "bold";
   button.textContent = "Press to change Button Color";
 
   // Append to content.
@@ -23,7 +19,7 @@
     // Calculate the perceived brightness of the color.
     // https://en.wikipedia.org/wiki/Luma_(video)#Rec._601_luma_versus_Rec._709_luma_coefficients
     const luminance = Math.sqrt(
-      0.299 * color.r ** 2 + 0.587 * color.g ** 2 + 0.114 * color.b ** 2,
+      0.299 * color.r ** 2 + 0.587 * color.g ** 2 + 0.114 * color.b ** 2
     );
 
     // Change the color to the random one.
