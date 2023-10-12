@@ -146,3 +146,11 @@ hr.solid {
   margin: 1em;
   border-radius: 5px;
 }
+
+button {
+  font-size: 1.5em;
+  padding: 0.5em;
+  padding: 0.5em 2em 0.5em 2em;
+  margin: 1em;
+  border-radius: 0.5rem;
+}
