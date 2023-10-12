@@ -109,7 +109,7 @@ hr.solid {
 }
 
 /* Stopwatch styling */
-.stopwatch {
+.container {
   color: white;
   background-color: #4f709c;
   width: 50%;
