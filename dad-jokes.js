@@ -1,8 +1,6 @@
 (function () {
   const div = document.createElement("div");
-  div.style.width = "450px";
-  div.style.padding = "50px 20px";
-  div.style.backgroundColor = "#FF0FF4";
+  div.classList.add("container");
 
   const button = document.createElement("button");
   button.textContent = "New Joke";
