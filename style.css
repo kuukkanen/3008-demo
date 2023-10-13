@@ -145,4 +145,5 @@ div.video {
   margin: 1em;
   padding: 2em;
   border-radius: 1em;
+  box-shadow: 1em 1em 1em #505050;
 }
