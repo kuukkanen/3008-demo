@@ -142,5 +142,6 @@ button {
 div.video {
   display: inline-block;
   background-color: #213555;
+  margin: 1em;
   padding: 2em;
 }
