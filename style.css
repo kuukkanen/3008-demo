@@ -138,3 +138,12 @@ button {
   margin: 1em;
   border-radius: 0.5rem;
 }
+
+div.video {
+  display: inline-block;
+  background-color: #4f709c;
+  margin: 1em;
+  padding: 1em;
+  border-radius: 1em;
+  box-shadow: 1em 1em 1em #505050;
+}
