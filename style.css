@@ -138,3 +138,9 @@ button {
   margin: 1em;
   border-radius: 0.5rem;
 }
+
+div.video {
+  display: inline-block;
+  background-color: #213555;
+  padding: 2em;
+}
