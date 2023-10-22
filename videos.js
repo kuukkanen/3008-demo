@@ -14,7 +14,7 @@
     '<iframe width="560" height="315" src="https://www.youtube.com/embed/Ibjm2KHfymo?si=uRWoWDDbaulTWeAd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
     '<iframe width="560" height="315" src="https://www.youtube.com/embed/DHjqpvDnNGE?si=2IgtitsYT8KDEu_i" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
     '<iframe width="560" height="315" src="https://www.youtube.com/embed/nAchMctX4YA?si=-zjn-O-5diyfCUSD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
-    '<iframe width="560" height="315" src="https://www.youtube.com/embed/nAchMctX4YA?si=LeK-YwTriBGerBlB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
+    '<iframe width="560" height="315" src="https://www.youtube.com/embed/UYm0kfnRTJk?si=NkBcPbEmbJkwGH51" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
   ];
 
   // Loop to add all videos to site
