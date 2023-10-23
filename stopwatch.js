@@ -1,14 +1,12 @@
 (function () {
-  let element = `<div class="container">
+  const element = `<div class="container">
                 <h1>Stopwatch</h1>
                 <div id="stopwatch">00:00:00</div>
                 <button id="startStopButton">Start</button>
                 <button id="resetButton">Reset</button>
                 </div> `;
-  content = document.getElementById("content"); // eslint-disable-line
   content.innerHTML = element; // eslint-disable-line
 
-  let startTime;
   let intervalId;
   let running = false;
   let previousTime;
@@ -38,7 +36,6 @@
   }
 
   function stop() {
-    //
     running = false;
     startStopButton.textContent = "Start";
     clearInterval(intervalId);
@@ -56,12 +53,12 @@
     previousTime = Date.now();
     totalTime += interval;
 
-    const displayTime = `${String(Math.floor(totalTime / 60000)).padStart(
-      2,
-      "0"
-    )}:${String(Math.floor((totalTime / 1000) % 60)).padStart(2, "0")}:${String(
-      Math.floor((totalTime % 1000) / 10)
-    ).padStart(2, "0")}`;
-    stopwatchDisplay.textContent = displayTime;
+    const minutes = totalTime / 60000;
+    const seconds = (totalTime / 1000) % 60;
+    const centiseconds = (totalTime % 1000) / 10;
+
+    stopwatchDisplay.textContent = [minutes, seconds, centiseconds]
+      .map((unit) => String(Math.floor(unit)).padStart(2, "0"))
+      .join(":");
   }
 })();

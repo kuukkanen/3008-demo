@@ -11,7 +11,7 @@
   const jokeText = document.createElement("p");
   jokeText.innerHTML = "Loading...";
 
-  content.appendChild(div);
+  content.appendChild(div); // eslint-disable-line
   div.appendChild(h1);
   div.appendChild(jokeText);
   div.appendChild(button);
