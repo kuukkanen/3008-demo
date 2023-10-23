@@ -36,7 +36,6 @@
   }
 
   function stop() {
-    //
     running = false;
     startStopButton.textContent = "Start";
     clearInterval(intervalId);
