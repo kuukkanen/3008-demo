@@ -8,7 +8,6 @@
   content = document.getElementById("content"); // eslint-disable-line
   content.innerHTML = element; // eslint-disable-line
 
-  let startTime;
   let intervalId;
   let running = false;
   let previousTime;
