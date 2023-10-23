@@ -1,5 +1,5 @@
 (function () {
-  let element = `<div class="container">
+  const element = `<div class="container">
                 <h1>Stopwatch</h1>
                 <div id="stopwatch">00:00:00</div>
                 <button id="startStopButton">Start</button>

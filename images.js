@@ -1,5 +1,5 @@
 (function () {
-  let element = `
+  const element = `
         <!-- Image Section: Animals -->
         <hr class="solid">
         <h2>Animals</h2>
