@@ -2,7 +2,6 @@
   // Header element with divider
   let element = `<div><h1>Videos</h1></div>
                  <hr class="solid">`;
-  content = document.getElementById("content"); // eslint-disable-line
   content.innerHTML = element; // eslint-disable-line
 
   // All videos in an array
@@ -23,11 +22,11 @@
     let video_element = document.createElement("div");
     video_element.classList.add("video");
     video_element.innerHTML = video_link;
-    content.appendChild(video_element);
+    content.appendChild(video_element); // eslint-disable-line
     console.log(videos[i]);
   }
 
   let divider = document.createElement("hr");
   divider.classList.add("solid");
-  content.appendChild(divider);
+  content.appendChild(divider); // eslint-disable-line
 })();
