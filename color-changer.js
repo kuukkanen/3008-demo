@@ -28,6 +28,5 @@
     })`;
     // Make text more visible based on the brightness.
     button.style.color = luminance <= 0.5 ? "white" : "black";
-    return;
   };
 })();
