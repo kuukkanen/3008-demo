@@ -5,7 +5,6 @@
                 <button id="startStopButton">Start</button>
                 <button id="resetButton">Reset</button>
                 </div> `;
-  content = document.getElementById("content"); // eslint-disable-line
   content.innerHTML = element; // eslint-disable-line
 
   let intervalId;
