@@ -21,5 +21,6 @@
     let t = document.createTextNode(inputValue);
     li.appendChild(t);
     document.getElementById("myUL").appendChild(li);
+    document.getElementById("myInput").value = "";
   });
 })();
