@@ -58,9 +58,9 @@
 
     const displayTime = `${String(Math.floor(totalTime / 60000)).padStart(
       2,
-      "0"
+      "0",
     )}:${String(Math.floor((totalTime / 1000) % 60)).padStart(2, "0")}:${String(
-      Math.floor((totalTime % 1000) / 10)
+      Math.floor((totalTime % 1000) / 10),
     ).padStart(2, "0")}`;
     stopwatchDisplay.textContent = displayTime;
   }

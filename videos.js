@@ -30,5 +30,4 @@
   let divider = document.createElement("hr");
   divider.classList.add("solid");
   content.appendChild(divider);
-
 })();
