@@ -53,12 +53,12 @@
     previousTime = Date.now();
     totalTime += interval;
 
-    const displayTime = `${String(Math.floor(totalTime / 60000)).padStart(
-      2,
-      "0",
-    )}:${String(Math.floor((totalTime / 1000) % 60)).padStart(2, "0")}:${String(
-      Math.floor((totalTime % 1000) / 10),
-    ).padStart(2, "0")}`;
-    stopwatchDisplay.textContent = displayTime;
+    const minutes = totalTime / 60000;
+    const seconds = (totalTime / 1000) % 60;
+    const centiseconds = (totalTime % 1000) / 10;
+
+    stopwatchDisplay.textContent = [minutes, seconds, centiseconds]
+      .map((unit) => String(Math.floor(unit)).padStart(2, "0"))
+      .join(":");
   }
 })();
