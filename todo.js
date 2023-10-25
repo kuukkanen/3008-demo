@@ -3,7 +3,7 @@
     <div class="container">
       <h1>ToDo List</h1>
       <input type="text" id="myInput" placeholder="Title..." />
-      <span id="addElement">
+      <span id="addElement" class="addBtn">
           Add
       </span>
 
