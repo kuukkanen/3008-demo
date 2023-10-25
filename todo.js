@@ -15,6 +15,12 @@
   content = document.getElementById("content"); // eslint-disable-line
   content.innerHTML = element; // eslint-disable-line
 
+  let list = document.querySelector("#myUL");
+  list.addEventListener(
+    "click",
+    (ev) => (ev.target.style.textDecoration = "line-through")
+  );
+
   document.getElementById("addElement").addEventListener("click", function () {
     let li = document.createElement("li");
     let inputValue = document.getElementById("myInput").value;
