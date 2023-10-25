@@ -14,3 +14,12 @@
   font-size: 18px;
   transition: 0.2s;
 }
+/* Set all odd list items to a different color (zebra-stripes) */
+#myUL li:nth-child(odd) {
+  background: #607a9d;
+}
+
+/* Darker background-color on hover */
+#myUL li:hover {
+  background: #4e637e;
+}
