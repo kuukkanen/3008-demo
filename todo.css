@@ -13,7 +13,13 @@
   background: #7194c5;
   font-size: 18px;
   transition: 0.2s;
+  /*li items select none */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
+
 /* Set all odd list items to a different color (zebra-stripes) */
 #myUL li:nth-child(odd) {
   background: #607a9d;
