@@ -2,10 +2,12 @@
   let element = `
     <div class="container">
       <h1>ToDo List</h1>
-      <input type="text" id="myInput" placeholder="Title..." />
-      <span id="addElement" class="addBtn">
-          Add
-      </span>
+      <div class="header">
+        <input type="text" id="myInput" placeholder="Title..." />
+        <span id="addElement" class="addBtn">
+            Add
+        </span>
+      </div>
 
       <ul id="myUL">
         <li>Get groceries</li>
