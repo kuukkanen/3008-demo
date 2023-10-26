@@ -30,6 +30,17 @@
   background: #4e637e;
 }
 
+/* Style the input */
+#myInput {
+  margin: 0;
+  border: none;
+  border-radius: 10px;
+  width: 75%;
+  padding: 10px;
+  float: left;
+  font-size: 16px;
+}
+
 /* Style the "Add" button */
 .addBtn {
   padding: 10px;
