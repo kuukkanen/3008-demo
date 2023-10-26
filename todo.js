@@ -17,7 +17,7 @@
   content = document.getElementById("content"); // eslint-disable-line
   content.innerHTML = element; // eslint-disable-line
 
-  // add a "line-through" when clicking on a list item
+  // toggle "line-through" when clicking on a list item
   let list = document.querySelector("#myUL");
   list.addEventListener(
     "click",
@@ -29,7 +29,7 @@
     false
   );
 
-  // click add to add new list item
+  // click add to create new list item
   document.getElementById("addElement").addEventListener("click", function () {
     let li = document.createElement("li");
     let inputValue = document.getElementById("myInput").value;
@@ -40,6 +40,7 @@
     } else {
       document.getElementById("myUL").appendChild(li);
     }
+    // clear input text
     document.getElementById("myInput").value = "";
   });
 })();
