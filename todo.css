@@ -13,7 +13,7 @@
   background: #7194c5;
   font-size: 18px;
   transition: 0.2s;
-
+  border-radius: 10px;
   /*li items select none */
   -webkit-user-select: none;
   -moz-user-select: none;
