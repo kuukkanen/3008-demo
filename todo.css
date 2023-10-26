@@ -13,6 +13,7 @@
   background: #7194c5;
   font-size: 18px;
   transition: 0.2s;
+
   /*li items select none */
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -28,6 +29,12 @@
 /* Darker background-color on hover */
 #myUL li:hover {
   background: #4e637e;
+}
+
+/* When clicked on, add a background color and strike out text */
+#myUL li.checked {
+  background: #666;
+  text-decoration: line-through;
 }
 
 /* Style the input */

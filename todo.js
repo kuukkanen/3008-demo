@@ -21,7 +21,12 @@
   let list = document.querySelector("#myUL");
   list.addEventListener(
     "click",
-    (ev) => (ev.target.style.textDecoration = "line-through")
+    (ev) => {
+      if (ev.target.tagName === "LI") {
+        ev.target.classList.toggle("checked");
+      }
+    },
+    false
   );
 
   // click add to add new list item
