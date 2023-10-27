@@ -29,6 +29,16 @@
     false
   );
 
+  // Create a "close" button and append it to each list item
+  let myNodelist = document.getElementById("myUL").getElementsByTagName("LI"); //only myUL li:s
+  for (i = 0; i < myNodelist.length; i++) {
+    let span = document.createElement("SPAN");
+    let txt = document.createTextNode("X");
+    span.className = "close";
+    span.appendChild(txt);
+    myNodelist[i].appendChild(span);
+  }
+
   // click add to create new list item
   document.getElementById("addElement").addEventListener("click", function () {
     let li = document.createElement("li");
