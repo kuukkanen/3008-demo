@@ -61,5 +61,11 @@
     }
     // clear input text
     document.getElementById("myInput").value = "";
+
+    var span = document.createElement("SPAN");
+    var txt = document.createTextNode("X");
+    span.className = "close";
+    span.appendChild(txt);
+    li.appendChild(span);
   });
 })();
