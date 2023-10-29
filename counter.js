@@ -1,7 +1,7 @@
 (function () {
     // Header element with divider
     const element = `<div class="counter_container">
-                        <h1>Counter</h1>
+                        <h1 id="counter_header">Counter</h1>
                         <div id="counter">0</div>
                         <button id="increaseButton">Increase</button>
                         <button id="resetButton">Reset</button>

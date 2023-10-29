@@ -150,6 +150,9 @@ div.video {
 
 #counter {
   font-size: 4em;
+  font-family: 'Press Start 2P';
+  background-color: #213555;
+  border-radius: 5px;
 }
 
 .counter_container {
