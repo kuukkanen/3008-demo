@@ -1,6 +1,6 @@
 (function () {
     // Header element with divider
-    const element = `<div class="container">
+    const element = `<div class="counter_container">
                         <h1>Counter</h1>
                         <div id="counter">0</div>
                         <button id="increaseButton">Increase</button>

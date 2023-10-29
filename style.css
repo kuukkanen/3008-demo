@@ -147,3 +147,20 @@ div.video {
   border-radius: 1em;
   box-shadow: 1em 1em 1em #505050;
 }
+
+#counter {
+  font-size: 4em;
+}
+
+.counter_container {
+  color: white;
+  background-color: #4f709c;
+  width: 60%;
+  display: block;
+  align-items: center;
+  margin: auto;
+  text-align: center;
+  padding: 2em;
+  border-radius: 5px;
+  box-shadow: 10px 15px 15px #505050;
+}
