@@ -170,8 +170,18 @@ div.video {
 
 #increaseButton {
   background-color: #86A789;
+  transition: background-color 0.1s;
+}
+
+#increaseButton:active {
+  background-color: #B0D9B1;
 }
 
 #decreaseButton {
   background-color: #F78CA2;
+  transition: background-color 0.1s;
+}
+
+#decreaseButton:active {
+  background-color: #FA003F;
 }
