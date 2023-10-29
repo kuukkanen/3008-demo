@@ -1,12 +1,12 @@
 (function () {
     // Header element with divider
-    const element = `<div><h1>Counter</h1></div>
-                        <div class="container">
+    const element = `<div class="container">
+                        <h1>Counter</h1>
                         <div id="counter">0</div>
                         <button id="increaseButton">Increase</button>
                         <button id="resetButton">Reset</button>
                         <button id="decreaseButton">Decrease</button>
-                        </div>`;
+                    </div>`;
     content.innerHTML = element; // eslint-disable-line
 
     const stopwatchDisplay = document.getElementById("stopwatch");
