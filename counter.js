@@ -20,7 +20,6 @@
         updateDisplay();
     });
 
-
     decreaseButton.addEventListener("click",() => {
         digit -= 1;
         updateDisplay();
@@ -31,13 +30,9 @@
         updateDisplay();
     });
 
-
-
     function updateDisplay (){
         counter.textContent = digit
     };
-
-
 
   })();
   
