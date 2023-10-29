@@ -147,3 +147,50 @@ div.video {
   border-radius: 1em;
   box-shadow: 1em 1em 1em #505050;
 }
+
+#counter {
+  font-size: 4em;
+  font-family: 'Press Start 2P';
+  background-color: #213555;
+  border-radius: 5px;
+}
+
+.counter_container {
+  color: white;
+  background-color: #4f709c;
+  width: 60%;
+  display: block;
+  align-items: center;
+  margin: auto;
+  text-align: center;
+  padding: 2em;
+  border-radius: 5px;
+  box-shadow: 10px 15px 15px #505050;
+}
+
+#increaseButton {
+  background-color: #86A789;
+  transition: background-color 0.1s;
+}
+
+#increaseButton:active {
+  background-color: #B0D9B1;
+}
+
+#decreaseButton {
+  background-color: #F78CA2;
+  transition: background-color 0.1s;
+}
+
+#decreaseButton:active {
+  background-color: #FA003F;
+}
+
+#resetCounterButton {
+  background-color: white;
+  transition: background-color 0.1s;
+}
+
+#resetCounterButton:active {
+  background-color: #909090;
+}
