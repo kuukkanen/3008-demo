@@ -4,7 +4,7 @@
                         <h1 id="counter_header">Counter</h1>
                         <div id="counter">0</div>
                         <button id="increaseButton">Increase</button>
-                        <button id="resetButton">Reset</button>
+                        <button id="resetCounterButton">Reset</button>
                         <button id="decreaseButton">Decrease</button>
                     </div>`;
     content.innerHTML = element; // eslint-disable-line
@@ -12,7 +12,7 @@
     // Get the HTML elements by id
     const increaseButton = document.getElementById("increaseButton");
     const decreaseButton = document.getElementById("decreaseButton");
-    const resetButton = document.getElementById("resetButton");
+    const resetCounterButton = document.getElementById("resetCounterButton");
     const counter = document.getElementById("counter");
     var digit = 0;
 
@@ -29,7 +29,7 @@
     });
 
     // The Reset Button resets digit to 0 when clicked
-    resetButton.addEventListener("click",() => {
+    resetCounterButton.addEventListener("click",() => {
         digit = 0;
         updateDisplay();
     });

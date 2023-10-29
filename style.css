@@ -185,3 +185,12 @@ div.video {
 #decreaseButton:active {
   background-color: #FA003F;
 }
+
+#resetCounterButton {
+  background-color: white;
+  transition: background-color 0.1s;
+}
+
+#resetCounterButton:active {
+  background-color: #909090;
+}
