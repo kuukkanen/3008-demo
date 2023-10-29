@@ -4,8 +4,8 @@
                         <h1>Counter</h1>
                         <div id="counter">0</div>
                         <button id="increaseButton">Increase</button>
-                        <button id="resetButton">Reset</button>
                         <button id="decreaseButton">Decrease</button>
+                        <button id="resetButton">Reset</button>
                     </div>`;
     content.innerHTML = element; // eslint-disable-line
 
