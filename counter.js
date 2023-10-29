@@ -9,9 +9,28 @@
                     </div>`;
     content.innerHTML = element; // eslint-disable-line
 
-    const stopwatchDisplay = document.getElementById("stopwatch");
-    const startStopButton = document.getElementById("startStopButton");
+    const increaseButton = document.getElementById("increaseButton");
+    const decreaseButton = document.getElementById("decreaseButton");
     const resetButton = document.getElementById("resetButton");
+    const counter = document.getElementById("counter");
+    var digit = 0;
+
+    increaseButton.addEventListener("click",() => {
+        digit += 1;
+        updateDisplay();
+    });
+
+
+    decreaseButton.addEventListener("click",() => {
+        digit -= 1;
+        updateDisplay();
+    });
+
+    function updateDisplay (){
+        counter.textContent = digit
+    };
+
+
 
   })();
   
