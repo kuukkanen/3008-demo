@@ -26,6 +26,13 @@
         updateDisplay();
     });
 
+    resetButton.addEventListener("click",() => {
+        digit = 0;
+        updateDisplay();
+    });
+
+
+
     function updateDisplay (){
         counter.textContent = digit
     };
