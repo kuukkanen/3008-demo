@@ -167,3 +167,11 @@ div.video {
   border-radius: 5px;
   box-shadow: 10px 15px 15px #505050;
 }
+
+#increaseButton {
+  background-color: #86A789;
+}
+
+#decreaseButton {
+  background-color: #F78CA2;
+}
