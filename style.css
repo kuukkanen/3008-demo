@@ -150,7 +150,7 @@ div.video {
 
 #counter {
   font-size: 4em;
-  font-family: 'Press Start 2P';
+  font-family: "Press Start 2P";
   background-color: #213555;
   border-radius: 5px;
 }
@@ -169,21 +169,21 @@ div.video {
 }
 
 #increaseButton {
-  background-color: #86A789;
+  background-color: #86a789;
   transition: background-color 0.1s;
 }
 
 #increaseButton:active {
-  background-color: #B0D9B1;
+  background-color: #b0d9b1;
 }
 
 #decreaseButton {
-  background-color: #F78CA2;
+  background-color: #f78ca2;
   transition: background-color 0.1s;
 }
 
 #decreaseButton:active {
-  background-color: #FA003F;
+  background-color: #fa003f;
 }
 
 #resetCounterButton {
