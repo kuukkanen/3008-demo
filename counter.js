@@ -14,7 +14,7 @@
   const decreaseButton = document.getElementById("decreaseButton");
   const resetCounterButton = document.getElementById("resetCounterButton");
   const counter = document.getElementById("counter");
-  var digit = 0;
+  let digit = 0;
 
   // The Increase Button increases digit by 1 when clicked
   increaseButton.addEventListener("click", () => {
