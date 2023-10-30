@@ -1,8 +1,6 @@
 (function () {
   const div = document.createElement("div");
-  div.style.width = "450px";
-  div.style.padding = "50px 20px";
-  div.style.backgroundColor = "#FF0FF4";
+  div.classList.add("container");
 
   const button = document.createElement("button");
   button.textContent = "New Joke";
@@ -13,7 +11,7 @@
   const jokeText = document.createElement("p");
   jokeText.innerHTML = "Loading...";
 
-  content.appendChild(div);
+  content.appendChild(div); // eslint-disable-line
   div.appendChild(h1);
   div.appendChild(jokeText);
   div.appendChild(button);

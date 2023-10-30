@@ -1,10 +1,6 @@
 (function () {
   // Create color changer button.
   const button = document.createElement("button");
-  button.style.borderRadius = "0.5rem";
-  button.style.padding = "1rem";
-  button.style.fontSize = "1rem";
-  button.style.fontWeight = "bold";
   button.textContent = "Press to change Button Color";
 
   // Append to content.
@@ -32,6 +28,5 @@
     })`;
     // Make text more visible based on the brightness.
     button.style.color = luminance <= 0.5 ? "white" : "black";
-    return;
   };
 })();
