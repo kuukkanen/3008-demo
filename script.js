@@ -48,4 +48,12 @@ function main() {
   // Listen to history changes.
   window.addEventListener("popstate", updateActive);
   updateActive(); // Also update immediately.
+
+  const menu = document.querySelector("nav > ul");
+  menu.style.display = "none";
+
+  const menuButton = document.getElementById("menu");
+  menuButton.onclick = () => {
+    menu.style.display = menu.style.display === "none" ? "block" : "none";
+  };
 }
