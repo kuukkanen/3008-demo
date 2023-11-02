@@ -15,7 +15,34 @@ function main() {
   // Get the title heading.
   const title = document.getElementById("title");
 
+  // Get the navigation menu and hide it by default.
+  const menu = document.querySelector("nav > ul");
+  menu.style.visibility = "hidden";
+  menu.style.opacity = "0";
+
+  const hideMenu = () => {
+    // Make menu hidden only after the opacity has faded.
+    setTimeout(() => (menu.style.visibility = "hidden"), 200);
+    menu.style.opacity = "0";
+  };
+
+  // When the menu button is clicked.
+  document.getElementById("menu").onclick = () => {
+    // If the menu is currently hidden.
+    if (menu.style.visibility === "hidden") {
+      // Make it visible and opaque.
+      menu.style.visibility = "visible";
+      menu.style.opacity = "1";
+    } else {
+      // If the menu is visible make it hidden by fading.
+      hideMenu();
+    }
+  };
+
   function updateActive() {
+    // Hide menu when page changes.
+    hideMenu();
+
     let hasActive = false;
     // For each button in the header.
     for (const button of buttons) {
@@ -53,23 +80,4 @@ function main() {
   // Listen to history changes.
   window.addEventListener("popstate", updateActive);
   updateActive(); // Also update immediately.
-
-  // Get the navigation menu and hide it by default.
-  const menu = document.querySelector("nav > ul");
-  menu.style.visibility = "hidden";
-  menu.style.opacity = "0";
-
-  // When the menu button is clicked.
-  document.getElementById("menu").onclick = () => {
-    // If the menu is currently hidden.
-    if (menu.style.visibility === "hidden") {
-      // Make it visible and opaque.
-      menu.style.visibility = "visible";
-      menu.style.opacity = "1";
-    } else {
-      // If the menu is visible make it transparent and hide it after it is fully transparent.
-      setTimeout(() => (menu.style.visibility = "hidden"), 200);
-      menu.style.opacity = "0";
-    }
-  };
 }
