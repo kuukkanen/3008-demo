@@ -1,7 +1,11 @@
 let content; // Content container. Used by demos.
+let madeby; // Made by copyright holder.
 
 // eslint-disable-next-line
 function main() {
+  // Get the made by copyright element.
+  madeby = document.getElementById("madeby");
+
   // Get all "buttons" from the header.
   const buttons = document.querySelectorAll(".header nav a");
   // Get the default hash from the first button.
@@ -31,6 +35,7 @@ function main() {
         document.title = `3008 Demo | ${button.innerText}`;
         title.innerText = document.title;
 
+        madeby.textContent = "";
         content.innerHTML = ""; // Clear content.
 
         // Create lazily loaded demo script.

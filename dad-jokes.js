@@ -1,4 +1,6 @@
 (function () {
+  madeby.textContent = "Lassi Inkinen"; // eslint-disable-line
+
   const div = document.createElement("div");
   div.classList.add("container");
 

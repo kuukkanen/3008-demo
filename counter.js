@@ -1,4 +1,6 @@
 (function () {
+  madeby.textContent = "Joonas Kiuru"; // eslint-disable-line
+
   // Header element with divider
   const element = `<div class="counter_container">
                         <h1 id="counter_header">Counter</h1>

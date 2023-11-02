@@ -1,4 +1,6 @@
 (function () {
+  madeby.textContent = "Jarkko Kuukkanen"; // eslint-disable-line
+
   // Very rudimentary Wavefront .obj file format loader.
   // Doesn't support many features but good enough for our use case.
   // https://en.wikipedia.org/wiki/Wavefront_.obj_file

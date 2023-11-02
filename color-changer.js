@@ -1,4 +1,6 @@
 (function () {
+  madeby.textContent = "Joonas Kiuru & Jarkko Kuukkanen"; // eslint-disable-line
+
   // Create color changer button.
   const button = document.createElement("button");
   button.textContent = "Press to change Button Color";
