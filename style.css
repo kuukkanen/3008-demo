@@ -211,8 +211,9 @@ nav > ul {
   background-color: #4f709c;
   padding: 1rem;
   min-width: 15rem;
-  border-radius: 4px;
+  border-radius: 0.5rem;
   box-shadow: 10px 15px 15px #505050;
+  border: 2px solid #213555;
 }
 
 nav > ul > li,
