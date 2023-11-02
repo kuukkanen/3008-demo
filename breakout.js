@@ -29,6 +29,7 @@
   observer.observe(content, { childList: true }); // eslint-disable-line
 
   let score = 0;
+  let hasWon = false;
 
   const paddle = {
     x: canvas.width / 2,
@@ -271,6 +272,8 @@
         bricks.splice(i, 1);
         score += 100; // Got a point.
       });
+
+      if (bricks.length === 0) hasWon = true;
     },
     // Collision with a block.
     blockCollision(block) {
@@ -338,7 +341,7 @@
 
   canvas.addEventListener("mousemove", ({ offsetX }) => {
     // Move the paddle with the mouse.
-    paddle.move(offsetX);
+    if (!hasWon) paddle.move(offsetX);
     // Move ball to the paddle when paused.
     if (ball.paused) ball.moveToPaddle();
   });
@@ -352,7 +355,7 @@
   });
 
   const draw = () => {
-    ball.update(); // Move the ball.
+    if (!hasWon) ball.update(); // Move the ball.
 
     ctx.fillStyle = "#101046";
     ctx.fillRect(0, 0, canvas.width, canvas.height); // Clear the screen each frame.
@@ -364,6 +367,18 @@
     ctx.fillStyle = "white";
     ctx.font = "900 20px monospace";
     ctx.fillText(`Score: ${String(score).padStart(4, "0")}`, 10, 25);
+
+    // Win statement text.
+    if (hasWon) {
+      ctx.font = "900 70px sans-serif";
+      const wonText = "You Won!!!";
+      const x = (640 - ctx.measureText(wonText).width) / 2;
+      const y = 200;
+      ctx.fillText(wonText, x, y);
+      ctx.strokeStyle = "black";
+      ctx.lineWidth = 3;
+      ctx.strokeText(wonText, x, y);
+    }
 
     // Next frame while the game is running.
     if (isRunning) window.requestAnimationFrame(draw);
