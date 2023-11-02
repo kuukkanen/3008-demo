@@ -49,17 +49,20 @@ function main() {
   window.addEventListener("popstate", updateActive);
   updateActive(); // Also update immediately.
 
+  // Get the navigation menu and hide it by default.
   const menu = document.querySelector("nav > ul");
   menu.style.visibility = "hidden";
   menu.style.opacity = "0";
 
-  const menuButton = document.getElementById("menu");
-  menuButton.onclick = () => {
-    const isHidden = menu.style.visibility === "hidden";
-    if (isHidden) {
+  // When the menu button is clicked.
+  document.getElementById("menu").onclick = () => {
+    // If the menu is currently hidden.
+    if (menu.style.visibility === "hidden") {
+      // Make it visible and opaque.
       menu.style.visibility = "visible";
       menu.style.opacity = "1";
     } else {
+      // If the menu is visible make it transparent and hide it after it is fully transparent.
       setTimeout(() => (menu.style.visibility = "hidden"), 200);
       menu.style.opacity = "0";
     }
