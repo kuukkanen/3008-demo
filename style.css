@@ -221,3 +221,8 @@ nav > ul > li,
 nav > ul > li > a {
   width: 100%;
 }
+
+footer {
+  text-align: center;
+  margin: 1rem 0;
+}
