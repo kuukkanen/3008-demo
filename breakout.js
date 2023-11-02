@@ -1,4 +1,6 @@
 (function () {
+  madeby.textContent = "Jarkko Kuukkanen"; // eslint-disable-line
+
   // Create canvas for the game.
   const canvas = document.createElement("canvas");
 

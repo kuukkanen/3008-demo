@@ -221,3 +221,19 @@ nav > ul > li,
 nav > ul > li > a {
   width: 100%;
 }
+
+footer {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+#madeby {
+  margin-bottom: 1rem;
+  font-weight: bold;
+  text-align: right;
+}
+
+#madeby::before {
+  content: "Made by: ";
+  font-weight: normal;
+}
