@@ -50,10 +50,18 @@ function main() {
   updateActive(); // Also update immediately.
 
   const menu = document.querySelector("nav > ul");
-  menu.style.display = "none";
+  menu.style.visibility = "hidden";
+  menu.style.opacity = "0";
 
   const menuButton = document.getElementById("menu");
   menuButton.onclick = () => {
-    menu.style.display = menu.style.display === "none" ? "block" : "none";
+    const isHidden = menu.style.visibility === "hidden";
+    if (isHidden) {
+      menu.style.visibility = "visible";
+      menu.style.opacity = "1";
+    } else {
+      setTimeout(() => (menu.style.visibility = "hidden"), 200);
+      menu.style.opacity = "0";
+    }
   };
 }

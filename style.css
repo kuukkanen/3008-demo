@@ -203,7 +203,7 @@ nav {
 }
 
 nav > ul {
-  display: none;
+  display: block;
   position: absolute;
   right: 0;
   top: 3.5rem;
@@ -213,6 +213,8 @@ nav > ul {
   border-radius: 0.5rem;
   box-shadow: 10px 15px 15px #505050;
   border: 2px solid #213555;
+  opacity: 0;
+  transition: opacity 0.2s;
 }
 
 nav > ul > li,
