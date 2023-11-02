@@ -59,8 +59,8 @@ function main() {
         hasActive = true;
 
         // Change the title.
-        document.title = `3008 Demo | ${button.innerText}`;
-        title.innerText = document.title;
+        document.title = `3008 Demo | ${button.textContent}`;
+        title.textContent = document.title;
 
         madeby.textContent = "";
         content.innerHTML = ""; // Clear content.
