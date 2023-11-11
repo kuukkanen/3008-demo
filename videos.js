@@ -37,6 +37,7 @@
     '<iframe width="560" height="315" src="https://www.youtube.com/embed/UAeJHAFjwPM?si=AfhngwcIxoT_gJ10" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
     '<iframe width="560" height="315" src="https://www.youtube.com/embed/FkKPsLxgpuY?si=WQd23GDXbJYU07PZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
     '<iframe width="560" height="315" src="https://www.youtube.com/embed/lFlu60qs7_4?si=-MnXeHk_h16zWr5T" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
+    '<iframe width="560" height="315" src="https://www.youtube.com/embed/cUzklzVXJwo?si=HP9F760dbff4mcXN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
   ];
 
   // Loop to add all videos to site
