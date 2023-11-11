@@ -7,7 +7,7 @@
                  <div><h2>Fireship</h2></div>`;
   content.innerHTML = element; // eslint-disable-line
 
-  // All videos in an array
+  // All Fireship videos in an array
   const fireshipVideos = [
     '<iframe width="560" height="315" src="https://www.youtube.com/embed/dWqNgzZwVJQ?si=ID65iTA82MTM6FMW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
     '<iframe width="560" height="315" src="https://www.youtube.com/embed/5ChkQKUzDCs?si=fR3klGmI_JGXqH_F" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
@@ -19,7 +19,7 @@
     '<iframe width="560" height="315" src="https://www.youtube.com/embed/UYm0kfnRTJk?si=NkBcPbEmbJkwGH51" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
   ];
 
-  // Loop to add all videos to site
+  // Loop to add all Fireship videos to site
   for (let i = 0; i < fireshipVideos.length; i++) {
     const video_link = fireshipVideos[i];
     const video_element = document.createElement("div");
@@ -32,7 +32,7 @@
   divider.classList.add("solid");
   content.appendChild(divider); // eslint-disable-line
 
-  // All videos in an array
+  // All Veritasium videos in an array
   const veritasiumVideos = [
     '<iframe width="560" height="315" src="https://www.youtube.com/embed/UAeJHAFjwPM?si=AfhngwcIxoT_gJ10" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
     '<iframe width="560" height="315" src="https://www.youtube.com/embed/FkKPsLxgpuY?si=WQd23GDXbJYU07PZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
@@ -40,7 +40,7 @@
     '<iframe width="560" height="315" src="https://www.youtube.com/embed/cUzklzVXJwo?si=HP9F760dbff4mcXN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
   ];
 
-  // Loop to add all videos to site
+  // Loop to add all Veritasium videos to site
   for (let i = 0; i < veritasiumVideos.length; i++) {
     const video_link = veritasiumVideos[i];
     const video_element = document.createElement("div");
