@@ -32,6 +32,12 @@
   divider.classList.add("solid");
   content.appendChild(divider); // eslint-disable-line
 
+  const veritasiumHeader = document.createElement("h2");
+  veritasiumHeader.textContent = 'Veritasium';
+  veritasiumHeader.classList.add("video_header");
+  content.appendChild(veritasiumHeader); // eslint-disable-line
+
+
   // All Veritasium videos in an array
   const veritasiumVideos = [
     '<iframe width="560" height="315" src="https://www.youtube.com/embed/UAeJHAFjwPM?si=AfhngwcIxoT_gJ10" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
