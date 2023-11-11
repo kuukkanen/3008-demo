@@ -31,4 +31,21 @@
   const divider = document.createElement("hr");
   divider.classList.add("solid");
   content.appendChild(divider); // eslint-disable-line
+
+  // All videos in an array
+  const veritasiumVideos = [
+    '<iframe width="560" height="315" src="https://www.youtube.com/embed/UAeJHAFjwPM?si=AfhngwcIxoT_gJ10" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
+ ];
+
+  // Loop to add all videos to site
+  for (let i = 0; i < veritasiumVideos.length; i++) {
+    const video_link = veritasiumVideos[i];
+    const video_element = document.createElement("div");
+    video_element.classList.add("video");
+    video_element.innerHTML = video_link;
+    content.appendChild(video_element); // eslint-disable-line
+  }
+
+
+
 })();
