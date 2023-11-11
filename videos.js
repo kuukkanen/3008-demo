@@ -4,7 +4,7 @@
   // Header element with divider
   const element = `<div><h1>Videos</h1></div>
                  <hr class="solid">
-                 <div><h2>Fireship</h2></div>`;
+                 <div><h2 class='video_header'>Fireship</h2></div>`;
   content.innerHTML = element; // eslint-disable-line
 
   // All Fireship videos in an array
