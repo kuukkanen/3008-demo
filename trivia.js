@@ -25,7 +25,15 @@
       document.createElement("div"),
     );
 
-    [result.correct_answer, ...result.incorrect_answers].forEach((answer) => {
+    const answers = [result.correct_answer, ...result.incorrect_answers];
+
+    // Suffle the answers so it is harder to guess.
+    answers.forEach((_, i) => {
+      const j = Math.floor(Math.random() * (i + 1));
+      [answers[i], answers[j]] = [answers[j], answers[i]];
+    });
+
+    answers.forEach((answer) => {
       // Create button for an (in)correct answer.
       const button = buttonContainer.appendChild(
         document.createElement("button"),
