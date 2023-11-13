@@ -33,10 +33,9 @@
   content.appendChild(divider); // eslint-disable-line
 
   const veritasiumHeader = document.createElement("h2");
-  veritasiumHeader.textContent = 'Veritasium';
+  veritasiumHeader.textContent = "Veritasium";
   veritasiumHeader.classList.add("video_header");
   content.appendChild(veritasiumHeader); // eslint-disable-line
-
 
   // All Veritasium videos in an array
   const veritasiumVideos = [
@@ -56,7 +55,4 @@
     video_element.innerHTML = video_link;
     content.appendChild(video_element); // eslint-disable-line
   }
-
-
-
 })();
