@@ -41,11 +41,11 @@
       );
       button.innerHTML = answer;
       // VERY BAD but is the easiest way to let the button know if it is correct or not.
-      button.correct = answer === result.correct_answer;
+      button.isCorrect = answer === result.correct_answer;
 
       button.onclick = () => {
         buttons.forEach((button) => {
-          if (button.correct) {
+          if (button.isCorrect) {
             // Green for a correct guess.
             button.style.backgroundColor = "lightgreen";
             button.style.color = "black";
