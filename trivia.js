@@ -40,10 +40,21 @@
         document.createElement("button"),
       );
       button.innerHTML = answer;
+      // VERY BAD but is the easiest way to let the button know if it is correct or not.
+      button.correct = answer === result.correct_answer;
 
       button.onclick = () => {
-        // Disable each button when any of them is clicked.
         buttons.forEach((button) => {
+          if (button.correct) {
+            // Green for a correct guess.
+            button.style.backgroundColor = "lightgreen";
+            button.style.color = "black";
+          } else {
+            // Red for an incorrect guess.
+            button.style.backgroundColor = "salmon";
+          }
+
+          // Disable each button when any of them is clicked.
           button.disabled = true;
         });
       };
