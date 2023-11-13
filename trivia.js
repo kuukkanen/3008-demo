@@ -44,6 +44,14 @@
       button.isCorrect = answer === result.correct_answer;
 
       button.onclick = () => {
+        // Create the result text after guessing.
+        const result = buttonContainer.appendChild(
+          document.createElement("span"),
+        );
+        result.style.fontSize = "1.5rem";
+        result.style.color = button.isCorrect ? "green" : "red";
+        result.innerText = button.isCorrect ? "Correct!" : "Wrong!!!";
+
         buttons.forEach((button) => {
           if (button.isCorrect) {
             // Green for a correct guess.
