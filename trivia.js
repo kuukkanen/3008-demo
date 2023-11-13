@@ -25,6 +25,7 @@
       document.createElement("div"),
     );
 
+    // Get all answers, correct or incorrect.
     const answers = [result.correct_answer, ...result.incorrect_answers];
 
     // Suffle the answers so it is harder to guess.
@@ -33,12 +34,22 @@
       [answers[i], answers[j]] = [answers[j], answers[i]];
     });
 
-    answers.forEach((answer) => {
+    const buttons = answers.map((answer) => {
       // Create button for an (in)correct answer.
       const button = buttonContainer.appendChild(
         document.createElement("button"),
       );
       button.innerHTML = answer;
+
+      button.onclick = () => {
+        // Disable each button when any of them is clicked.
+        buttons.forEach((button) => {
+          button.disabled = true;
+        });
+      };
+
+      // Return the button for the buttons array.
+      return button;
     });
   });
 })();
