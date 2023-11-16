@@ -27,7 +27,7 @@
 
     // Get the questions from the API.
     const { results } = await fetch(
-      "https://opentdb.com/api.php?amount=10",
+      "https://opentdb.com/api.php?amount=10&category=18",
     ).then((response) => response.json());
 
     // Clear the container content.
