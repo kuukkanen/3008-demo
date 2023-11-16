@@ -1,7 +1,11 @@
 let content; // Content container. Used by demos.
+let madeby; // Made by copyright holder.
 
 // eslint-disable-next-line
 function main() {
+  // Get the made by copyright element.
+  madeby = document.getElementById("madeby");
+
   // Get all "buttons" from the header.
   const buttons = document.querySelectorAll(".header nav a");
   // Get the default hash from the first button.
@@ -11,7 +15,34 @@ function main() {
   // Get the title heading.
   const title = document.getElementById("title");
 
+  // Get the navigation menu and hide it by default.
+  const menu = document.querySelector("nav > ul");
+  menu.style.visibility = "hidden";
+  menu.style.opacity = "0";
+
+  const hideMenu = () => {
+    // Make menu hidden only after the opacity has faded.
+    setTimeout(() => (menu.style.visibility = "hidden"), 200);
+    menu.style.opacity = "0";
+  };
+
+  // When the menu button is clicked.
+  document.getElementById("menu").onclick = () => {
+    // If the menu is currently hidden.
+    if (menu.style.visibility === "hidden") {
+      // Make it visible and opaque.
+      menu.style.visibility = "visible";
+      menu.style.opacity = "1";
+    } else {
+      // If the menu is visible make it hidden by fading.
+      hideMenu();
+    }
+  };
+
   function updateActive() {
+    // Hide menu when page changes.
+    hideMenu();
+
     let hasActive = false;
     // For each button in the header.
     for (const button of buttons) {
@@ -28,9 +59,10 @@ function main() {
         hasActive = true;
 
         // Change the title.
-        document.title = `3008 Demo | ${button.innerText}`;
-        title.innerText = document.title;
+        document.title = `3008 Demo | ${button.textContent}`;
+        title.textContent = document.title;
 
+        madeby.textContent = "";
         content.innerHTML = ""; // Clear content.
 
         // Create lazily loaded demo script.

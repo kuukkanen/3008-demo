@@ -1,4 +1,6 @@
 (function () {
+  madeby.textContent = "Joonas Kiuru"; // eslint-disable-line
+
   const element = `
         <!-- Image Section: Animals -->
         <hr class="solid">

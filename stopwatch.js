@@ -1,4 +1,6 @@
 (function () {
+  madeby.textContent = "Joonas Kiuru"; // eslint-disable-line
+
   const element = `<div class="container">
                 <h1>Stopwatch</h1>
                 <div id="stopwatch">00:00:00</div>

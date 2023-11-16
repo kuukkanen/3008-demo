@@ -15,7 +15,7 @@
     <link rel="icon" href="icon.svg" sizes="any" type="image/svg+xml" />
   </head>
   <body onload="main();">
-    <div class="header" id="mainHeader">
+    <header class="header" id="mainHeader">
       <div>
         <a href="#color-changer" class="logo">
           <img src="icon.svg" class="icon" width="48" height="48" />
@@ -23,6 +23,7 @@
         <h1 id="title">3008 Demo</h1>
       </div>
       <nav>
+        <img src="menu.svg" width="48" height="48" id="menu" />
         <ul>
           <li><a href="#color-changer">Color Changer</a></li>
           <li><a href="#images">Images</a></li>
@@ -32,11 +33,18 @@
           <li><a href="#stopwatch">Stopwatch</a></li>
           <li><a href="#videos">Videos</a></li>
           <li><a href="#counter">Counter</a></li>
+          <li><a href="#trivia">Trivia</a></li>
         </ul>
       </nav>
-    </div>
+    </header>
     <main>
+      <div id="madeby"></div>
       <div id="content"></div>
     </main>
+    <footer>
+      <small>
+        Copyright &copy; 2023 Jarkko Kuukkanen, Joonas Kiuru, Lassi Inkinen
+      </small>
+    </footer>
   </body>
 </html>
