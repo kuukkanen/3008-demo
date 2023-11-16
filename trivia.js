@@ -1,88 +1,108 @@
-(async function () {
+(function () {
   madeby.textContent = "Jarkko Kuukkanen"; // eslint-disable-line
-
-  // Get the questions from the API.
-  const { results } = await fetch("https://opentdb.com/api.php?amount=10").then(
-    (response) => response.json(),
-  );
 
   // Create a container for the questions.
   const container = document.createElement("div");
   content.appendChild(container); // eslint-disable-line
 
-  let correctAnswers = 0;
-  let answeredQuestions = 0;
+  const questions = async () => {
+    // Loading...
+    container.innerHTML = "Loading&hellip;";
 
-  // Add each question in the container.
-  results.forEach((result, i) => {
-    const question = document.createElement("p");
-    // Use innerHTML as there might be HTML entities in the question text.
-    question.innerHTML = `Question ${i + 1}. ${result.question}`;
-    question.style.fontSize = "1.5rem";
-    question.style.fontWeight = "bold";
+    // Get the questions from the API.
+    const { results } = await fetch(
+      "https://opentdb.com/api.php?amount=10",
+    ).then((response) => response.json());
 
-    container.appendChild(question);
+    // Clear the container content.
+    container.innerHTML = "";
 
-    // Create a container for the buttons.
-    const buttonContainer = container.appendChild(
-      document.createElement("div"),
-    );
+    let correctAnswers = 0;
+    let answeredQuestions = 0;
 
-    // Get all answers, correct or incorrect.
-    const answers = [result.correct_answer, ...result.incorrect_answers];
+    // Add each question in the container.
+    results.forEach((result, i) => {
+      const question = document.createElement("p");
+      // Use innerHTML as there might be HTML entities in the question text.
+      question.innerHTML = `Question ${i + 1}. ${result.question}`;
+      question.style.fontSize = "1.5rem";
+      question.style.fontWeight = "bold";
 
-    // Suffle the answers so it is harder to guess.
-    answers.forEach((_, i) => {
-      const j = Math.floor(Math.random() * (i + 1));
-      [answers[i], answers[j]] = [answers[j], answers[i]];
-    });
+      container.appendChild(question);
 
-    const buttons = answers.map((answer) => {
-      // Create button for an (in)correct answer.
-      const button = buttonContainer.appendChild(
-        document.createElement("button"),
+      // Create a container for the buttons.
+      const buttonContainer = container.appendChild(
+        document.createElement("div"),
       );
-      button.innerHTML = answer;
-      // VERY BAD but is the easiest way to let the button know if it is correct or not.
-      button.isCorrect = answer === result.correct_answer;
 
-      button.onclick = () => {
-        // Create the result text after guessing.
-        const result = buttonContainer.appendChild(
-          document.createElement("span"),
+      // Get all answers, correct or incorrect.
+      const answers = [result.correct_answer, ...result.incorrect_answers];
+
+      // Suffle the answers so it is harder to guess.
+      answers.forEach((_, i) => {
+        const j = Math.floor(Math.random() * (i + 1));
+        [answers[i], answers[j]] = [answers[j], answers[i]];
+      });
+
+      const buttons = answers.map((answer) => {
+        // Create button for an (in)correct answer.
+        const button = buttonContainer.appendChild(
+          document.createElement("button"),
         );
-        result.style.fontSize = "1.5rem";
-        result.style.color = button.isCorrect ? "green" : "red";
-        result.innerText = button.isCorrect ? "Correct!" : "Wrong!!!";
+        button.innerHTML = answer;
+        // VERY BAD but is the easiest way to let the button know if it is correct or not.
+        button.isCorrect = answer === result.correct_answer;
 
-        buttons.forEach((button) => {
+        button.onclick = () => {
+          // Create the result text after guessing.
+          const result = buttonContainer.appendChild(
+            document.createElement("span"),
+          );
+          result.style.fontSize = "1.5rem";
+          result.style.color = button.isCorrect ? "green" : "red";
+          result.innerText = button.isCorrect ? "Correct!" : "Wrong!!!";
+
+          buttons.forEach((button) => {
+            if (button.isCorrect) {
+              // Green for a correct guess.
+              button.style.backgroundColor = "lightgreen";
+              button.style.color = "black";
+            } else {
+              // Red for an incorrect guess.
+              button.style.backgroundColor = "salmon";
+            }
+
+            // Disable each button when any of them is clicked.
+            button.disabled = true;
+          });
+
           if (button.isCorrect) {
-            // Green for a correct guess.
-            button.style.backgroundColor = "lightgreen";
-            button.style.color = "black";
-          } else {
-            // Red for an incorrect guess.
-            button.style.backgroundColor = "salmon";
+            // Increase correct answers.
+            correctAnswers++;
           }
 
-          // Disable each button when any of them is clicked.
-          button.disabled = true;
-        });
+          // All questions answered.
+          if (++answeredQuestions >= results.length) {
+            // Show how many questions were answered correctly.
+            const result = container.appendChild(document.createElement("div"));
+            result.innerText = `You answered ${correctAnswers} out of ${results.length} questions correctly.`;
 
-        if (button.isCorrect) {
-          // Increase correct answers.
-          correctAnswers++;
-        }
+            // Button to reload the questions.
+            const reloadButton = container.appendChild(
+              document.createElement("button"),
+            );
+            reloadButton.innerText = "Reload";
+            // Reload questions on click.
+            reloadButton.onclick = () => questions();
+          }
+        };
 
-        // All questions answered.
-        if (++answeredQuestions >= results.length) {
-          const result = container.appendChild(document.createElement("div"));
-          result.innerText = `You answered ${correctAnswers} out of ${results.length} questions correctly.`;
-        }
-      };
-
-      // Return the button for the buttons array.
-      return button;
+        // Return the button for the buttons array.
+        return button;
+      });
     });
-  });
+  };
+
+  // Ask questions at the start.
+  questions();
 })();
