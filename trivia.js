@@ -1,6 +1,22 @@
 (function () {
   madeby.textContent = "Jarkko Kuukkanen"; // eslint-disable-line
 
+  // Get the saved score.
+  let totalCorrect = Number(localStorage.getItem("correctAnswers")) || 0;
+
+  const totalCorrectElem = document.createElement("div");
+  totalCorrectElem.style.fontSize = "1.5rem";
+  totalCorrectElem.style.fontWeight = "bold";
+  totalCorrectElem.innerText = `Score (total correct): ${totalCorrect}`;
+  content.appendChild(totalCorrectElem); // eslint-disable-line
+
+  // Increase score by one and update the UI.
+  const increaseScore = () => {
+    totalCorrect++;
+    totalCorrectElem.innerText = `Score (total correct): ${totalCorrect}`;
+    localStorage.setItem("correctAnswers", totalCorrect);
+  };
+
   // Create a container for the questions.
   const container = document.createElement("div");
   content.appendChild(container); // eslint-disable-line
@@ -79,6 +95,8 @@
           if (button.isCorrect) {
             // Increase correct answers.
             correctAnswers++;
+            // Also increase overall score.
+            increaseScore();
           }
 
           // All questions answered.
