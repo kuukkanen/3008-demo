@@ -10,6 +10,9 @@
   const container = document.createElement("div");
   content.appendChild(container); // eslint-disable-line
 
+  let correctAnswers = 0;
+  let answeredQuestions = 0;
+
   // Add each question in the container.
   results.forEach((result, i) => {
     const question = document.createElement("p");
@@ -65,6 +68,17 @@
           // Disable each button when any of them is clicked.
           button.disabled = true;
         });
+
+        if (button.isCorrect) {
+          // Increase correct answers.
+          correctAnswers++;
+        }
+
+        // All questions answered.
+        if (++answeredQuestions >= results.length) {
+          const result = container.appendChild(document.createElement("div"));
+          result.innerText = `You answered ${correctAnswers} out of ${results.length} questions correctly.`;
+        }
       };
 
       // Return the button for the buttons array.
