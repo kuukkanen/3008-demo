@@ -27,15 +27,11 @@
 
   // toggle "line-through" when clicking on a list item
   const list = document.querySelector("#myUL");
-  list.addEventListener(
-    "click",
-    (ev) => {
-      if (ev.target.tagName === "LI") {
-        ev.target.classList.toggle("checked");
-      }
-    },
-    false
-  );
+  list.addEventListener("click", (ev) => {
+    if (ev.target.tagName === "LI") {
+      ev.target.classList.toggle("checked");
+    }
+  });
 
   // Create a "close" button and append it to each list item
   const myNodelist = document.getElementById("myUL").getElementsByTagName("LI"); //only myUL li:s
