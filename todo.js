@@ -61,12 +61,14 @@
     // clear input text
     document.getElementById("myInput").value = "";
 
+    // attach close button
     const span = document.createElement("SPAN");
     const txt = document.createTextNode("X");
     span.className = "close";
     span.appendChild(txt);
     li.appendChild(span);
 
+    // click handling for new item close button
     span.onclick = function () {
       const div = this.parentElement;
       div.style.display = "none";
