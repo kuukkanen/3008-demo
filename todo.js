@@ -18,6 +18,13 @@
   content = document.getElementById("content"); // eslint-disable-line
   content.innerHTML = element; // eslint-disable-line
 
+  // update localStorage
+  function updateLocalStorage() {
+    const listItems = document.querySelectorAll("#myUL li");
+    const todoList = Array.from(listItems).map((item) => item.textContent);
+    localStorage.setItem("todoList", JSON.stringify(todoList));
+  }
+
   // toggle "line-through" when clicking on a list item
   const list = document.querySelector("#myUL");
   list.addEventListener(
