@@ -21,7 +21,10 @@
   // update localStorage
   function updateLocalStorage() {
     const listItems = document.querySelectorAll("#myUL li");
-    const todoList = Array.from(listItems).map((item) => item.textContent);
+    const todoList = Array.from(listItems).map((item) => ({
+      className: item.className,
+      textContent: item.textContent,
+    }));
     localStorage.setItem("todoList", JSON.stringify(todoList));
   }
 
