@@ -33,6 +33,7 @@
   list.addEventListener("click", (ev) => {
     if (ev.target.tagName === "LI") {
       ev.target.classList.toggle("checked");
+      updateLocalStorage();
     }
   });
 
@@ -48,6 +49,7 @@
     if (ev.target.className === "close") {
       const div = ev.target.parentElement;
       div.style.display = "none";
+      updateLocalStorage();
     }
   });
 
