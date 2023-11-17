@@ -40,10 +40,7 @@
   // Create a "close" button and append it to each list item
   const myNodelist = document.getElementById("myUL").getElementsByTagName("LI"); //only myUL li:s
   for (let i = 0; i < myNodelist.length; i++) {
-    const span = document.createElement("SPAN");
-    const txt = document.createTextNode("X");
-    span.className = "close";
-    span.appendChild(txt);
+    const span = createCloseButton();
     myNodelist[i].appendChild(span);
   }
 
