@@ -77,18 +77,11 @@
     const li = document.createElement("li");
     const t = document.createTextNode(value);
     li.appendChild(t);
+
     // attach close button
-    const span = document.createElement("SPAN");
-    const txt = document.createTextNode("X");
-    span.className = "close";
-    span.appendChild(txt);
+    const span = createCloseButton();
     li.appendChild(span);
-    // click handling for new item close button
-    span.onclick = function () {
-      const div = this.parentElement;
-      div.style.display = "none";
-      updateLocalStorage();
-    };
+
     return li;
   }
 
