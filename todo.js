@@ -40,13 +40,12 @@
   }
 
   // Click on a close button to hide the current list item
-  const close = document.getElementsByClassName("close");
-  for (let i = 0; i < close.length; i++) {
-    close[i].onclick = function () {
-      const div = this.parentElement;
+  document.getElementById("myUL").addEventListener("click", function (ev) {
+    if (ev.target.className === "close") {
+      const div = ev.target.parentElement;
       div.style.display = "none";
-    };
-  }
+    }
+  });
 
   // click add to create new list item
   document.getElementById("addElement").addEventListener("click", function () {
