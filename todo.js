@@ -55,6 +55,23 @@
     }
   });
 
+  // function to create close button
+  function createCloseButton() {
+    const span = document.createElement("SPAN");
+    const txt = document.createTextNode("X");
+    span.className = "close";
+    span.appendChild(txt);
+
+    // click handling for close button
+    span.onclick = function () {
+      const div = this.parentElement;
+      div.style.display = "none";
+      updateLocalStorage();
+    };
+
+    return span;
+  }
+
   // function to create new list item
   function createListItem(value) {
     const li = document.createElement("li");
