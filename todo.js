@@ -48,7 +48,7 @@
   });
 
   // click add to create new list item
-  document.getElementById("addElement").addEventListener("click", function () {
+  function addListItem() {
     const li = document.createElement("li");
     const inputValue = document.getElementById("myInput").value;
     const t = document.createTextNode(inputValue);
@@ -71,5 +71,7 @@
       const div = this.parentElement;
       div.style.display = "none";
     };
-  });
+  }
+
+  document.getElementById("addElement").addEventListener("click", addListItem);
 })();
