@@ -55,32 +55,39 @@
     }
   });
 
-  // click add to create new list item
-  function addListItem() {
+  // function to create new list item
+  function createListItem(value) {
     const li = document.createElement("li");
-    const inputValue = document.getElementById("myInput").value;
-    const t = document.createTextNode(inputValue);
+    const t = document.createTextNode(value);
     li.appendChild(t);
-    if (inputValue === "") {
-      alert("You must write something!");
-    } else {
-      document.getElementById("myUL").appendChild(li);
-    }
-    // clear input text
-    document.getElementById("myInput").value = "";
-
     // attach close button
     const span = document.createElement("SPAN");
     const txt = document.createTextNode("X");
     span.className = "close";
     span.appendChild(txt);
     li.appendChild(span);
-
     // click handling for new item close button
     span.onclick = function () {
       const div = this.parentElement;
       div.style.display = "none";
+      updateLocalStorage();
     };
+    return li;
+  }
+
+  // function to add new list item
+  function addListItem() {
+    const inputValue = document.getElementById("myInput").value;
+    if (inputValue === "") {
+      alert("You must write something!");
+    } else {
+      const newListItem = createListItem(inputValue);
+      document.getElementById("myUL").appendChild(newListItem);
+      updateLocalStorage();
+    }
+
+    // clear input text
+    document.getElementById("myInput").value = "";
   }
 
   document.getElementById("addElement").addEventListener("click", addListItem);
