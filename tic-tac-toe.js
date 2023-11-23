@@ -17,43 +17,18 @@
 
   function checkBoard() {
     // Check rows.
-    for (let y = 0; y < 3; y++) {
-      // Get the first value in the row.
-      let prevValue = boardValues[y][0];
-      // Don't check empty values.
-      if (prevValue !== "") {
-        for (let x = 1; x < 3; x++) {
-          const currentValue = boardValues[y][x];
-          // This is not a winning row if the values don't match.
-          if (currentValue !== prevValue) break;
-          prevValue = currentValue;
-          // We reached the end.
-          if (x === 2) {
-            hasWon = true;
-            return;
-          }
-        }
+    for (let i = 0; i < 3; i++) {
+      let rowSameSymbols = 1;
+      let colSameSymbols = 1;
+      for (let j = 1; j < 3; j++) {
+        // Count the amount of symbols that match the first symbol of the row/column.
+        if (boardValues[i][j] === boardValues[i][0]) rowSameSymbols++;
+        if (boardValues[j][i] === boardValues[0][i]) colSameSymbols++;
       }
-    }
 
-    // Check columns.
-    for (let x = 0; x < 3; x++) {
-      // Get the first value in the column.
-      let prevValue = boardValues[0][x];
-      // Don't check empty values.
-      if (prevValue !== "") {
-        for (let y = 1; y < 3; y++) {
-          const currentValue = boardValues[y][x];
-          // This is not a winning column if the values don't match.
-          if (currentValue !== prevValue) break;
-          prevValue = currentValue;
-          // We reached the end.
-          if (y === 2) {
-            hasWon = true;
-            return;
-          }
-        }
-      }
+      // All are the same symbols so we won.
+      if (boardValues[i][0] !== "" && rowSameSymbols === 3) hasWon = true;
+      if (boardValues[0][i] !== "" && colSameSymbols === 3) hasWon = true;
     }
   }
 
