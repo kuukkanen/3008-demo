@@ -101,7 +101,12 @@
     } else {
       const list = document.querySelector("#myUL");
       const li = document.createElement("li");
+      const deleteBtn = document.createElement("span");
       li.innerHTML = `${inputValue}`;
+      deleteBtn.className = "close";
+      deleteBtn.textContent = "X";
+
+      li.appendChild(deleteBtn);
       list.insertBefore(li, list.children[0]);
       localStorage.setItem(
         "tasks",
