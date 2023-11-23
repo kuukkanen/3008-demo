@@ -1,5 +1,7 @@
 (function () {
-  const savedTodo = localStorage.getItem("todoList");
+  let todoList = localStorage.getItem("tasks")
+    ? JSON.parse(localStorage.getItem("tasks"))
+    : [];
 
   const element = `
     <div class="container">
@@ -12,11 +14,26 @@
       </div>
 
       <ul id="myUL">
-        ${savedTodo}
       </ul>
     </div>`;
   content = document.getElementById("content"); // eslint-disable-line
   content.innerHTML = element; // eslint-disable-line
+
+  loadList();
+
+  function loadList() {
+    if (!todoList) return;
+
+    const list = document.querySelector("#myUL");
+    todoList.forEach((task) => {
+      const li = document.createElement("li");
+      // Conditionally apply a class based on the value of task.checked
+      const checkedClass = task.checked ? "checked" : "";
+      li.className = checkedClass;
+      li.innerHTML = `${task.task}`;
+      list.insertBefore(li, list.children[0]);
+    });
+  }
 
   // update localStorage
   function updateLocalStorage() {
