@@ -11,14 +11,65 @@
   content.appendChild(board); // eslint-disable-line
 
   let isPlayer2Turn = false;
+  let hasWon = false;
+
+  const boardValues = Array.from({ length: 3 }, () => new Array(3).fill(""));
+
+  function checkBoard() {
+    // Check rows.
+    for (let y = 0; y < 3; y++) {
+      // Get the first value in the row.
+      let prevValue = boardValues[y][0];
+      // Don't check empty values.
+      if (prevValue !== "") {
+        for (let x = 1; x < 3; x++) {
+          const currentValue = boardValues[y][x];
+          // This is not a winning row if the values don't match.
+          if (currentValue !== prevValue) break;
+          prevValue = currentValue;
+          // We reached the end.
+          if (x === 2) {
+            hasWon = true;
+            return;
+          }
+        }
+      }
+    }
+
+    // Check columns.
+    for (let x = 0; x < 3; x++) {
+      // Get the first value in the column.
+      let prevValue = boardValues[0][x];
+      // Don't check empty values.
+      if (prevValue !== "") {
+        for (let y = 1; y < 3; y++) {
+          const currentValue = boardValues[y][x];
+          // This is not a winning column if the values don't match.
+          if (currentValue !== prevValue) break;
+          prevValue = currentValue;
+          // We reached the end.
+          if (y === 2) {
+            hasWon = true;
+            return;
+          }
+        }
+      }
+    }
+  }
 
   function onClick(x, y, square) {
+    // Don't allow clicking when the game has been won.
+    if (hasWon) return;
+
     // The square has no symbol yet.
     if (!square.innerText) {
       // Set the symbol.
-      square.innerText = isPlayer2Turn ? "x" : "o";
+      boardValues[y][x] = isPlayer2Turn ? "x" : "o";
+      square.innerText = boardValues[y][x];
       // Switch turns.
       isPlayer2Turn = !isPlayer2Turn;
+      // Check the board after each turn.
+      checkBoard();
     }
   }
 
