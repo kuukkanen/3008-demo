@@ -18,6 +18,7 @@
         <img class="medium-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Gemeine_Heidelibelle_%28Sympetrum_vulgatum%29_4.jpg/330px-Gemeine_Heidelibelle_%28Sympetrum_vulgatum%29_4.jpg">
         </div>
         <hr class="solid">
+        <!-- Image Section: Cars -->
         <h2>Cars</h2>
         <div>
         <img class="medium-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/BMW_sixth-generation_7Series_in_Tokyo-MotorShow_2015.jpg/480px-BMW_sixth-generation_7Series_in_Tokyo-MotorShow_2015.jpg">
@@ -27,6 +28,7 @@
         <img class="medium-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Alfa_Romeo_33_1.3_VL_1991.jpg/375px-Alfa_Romeo_33_1.3_VL_1991.jpg">
         </div>
         <hr class="solid">
+        <!-- Image Section: Garfield -->
         <h2>Garfield</h2>
         <img class="medium-image" src="https://upload.wikimedia.org/wikipedia/fi/thumb/4/43/Garfield.gif/375px-Garfield.gif">
         <img class="medium-image" src="https://upload.wikimedia.org/wikipedia/en/4/46/Garfieldand_friends.png">
@@ -39,6 +41,20 @@
         <img class="medium-image" src="https://avatar.amuniversal.com/feature_avatars/recommendation_images/features/ga/large_rec-201701251556.jpg">
         <img class="medium-image" src="https://i.guim.co.uk/img/media/20a74d437c1ae0ef38c7c87d49e3d4db271b0cb3/569_167_2584_1550/master/2584.jpg?width=1200&height=900&quality=85&auto=format&fit=crop&s=775be45f9af62070840c2740f3e6c555">
         <img class="medium-image" src="https://www.giantbomb.com/a/uploads/original/0/316/510127-garfield_anime_wallpaper.jpg">    
+        
+        <hr class="solid">
+        <!-- Image Section: Guitars -->
+        <h2>Guitars</h2>
+        <img class="medium-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Guitar_1.jpg/640px-Guitar_1.jpg">    
+        <img class="medium-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Guitars_of_the_sort_played_by_Lennon.jpg/640px-Guitars_of_the_sort_played_by_Lennon.jpg">    
+        <img class="medium-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Adapted_Guitar_I.jpg/640px-Adapted_Guitar_I.jpg">
+        <img class="medium-image" src="https://www.andysmusic.com/cdn/shop/files/Used-Squier-Mini-Stratocaster-34-Size-Electric-Guitar-Black-Mint-Condition.jpg?v=1688614436">
+        <img class="medium-image" src="https://i0.wp.com/www.saitoguitars.com/wp-content/uploads/2023/03/Top1-20230331-scaled.jpg?fit=2560%2C1707&ssl=1">
+        <img class="medium-image" src="https://www.artistguitars.co.uk/cdn/shop/files/16155_ffa08744-dda7-4395-8ccf-cff9c1fcf29a.jpg?v=1689165323">
+        <img class="medium-image" src="https://www.prebeat.co.uk/images/johnny-brook-electric-guitar-red-p3722-13032_image.jpg">
+        <img class="medium-image" src="https://cdn.ecommercedns.uk/files/6/248156/6/27546066/1964-gibson-sg-standard-players-grade-07.jpg">
+        <img class="medium-image" src="https://sirclocdn.com/nafiriguitar/products/_220708112734_Antique%20SB%20%281%29_full.jpg">
+        <img class="medium-image" src="https://d1aeri3ty3izns.cloudfront.net/media/39/398233/600/preview.jpg">
         <hr class="solid">`;
   content = document.getElementById("content"); // eslint-disable-line
   content.innerHTML = element; // eslint-disable-line
