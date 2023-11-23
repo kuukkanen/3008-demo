@@ -63,39 +63,6 @@
     }
   });
 
-  /*   // Create a "close" button and append it to each list item
-  const myNodelist = document.getElementById("myUL").getElementsByTagName("LI"); //only myUL li:s
-  for (let i = 0; i < myNodelist.length; i++) {
-    const span = createCloseButton();
-    myNodelist[i].appendChild(span);
-  }
-
-  // Click on a close button to hide the current list item
-  document.getElementById("myUL").addEventListener("click", function (ev) {
-    if (ev.target.className === "close") {
-      const div = ev.target.parentElement;
-      div.style.display = "none";
-      updateLocalStorage();
-    }
-  });
-
-   // function to create close button
-  function createCloseButton() {
-    const span = document.createElement("SPAN");
-    const txt = document.createTextNode("X");
-    span.className = "close";
-    span.appendChild(txt);
-
-    // click handling for close button
-    span.onclick = function () {
-      const div = this.parentElement;
-      div.style.display = "none";
-      updateLocalStorage();
-    };
-
-    return span;
-  } */
-
   // function to add new list item
   function addListItem() {
     const inputValue = document.getElementById("myInput").value;
