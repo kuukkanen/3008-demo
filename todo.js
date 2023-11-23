@@ -34,6 +34,9 @@
       li.innerHTML = `${task.task}`;
       deleteBtn.className = "close";
       deleteBtn.textContent = "X";
+      deleteBtn.addEventListener("click", () => {
+        deleteTask(li, task);
+      });
 
       li.appendChild(deleteBtn);
       list.insertBefore(li, list.children[0]);
