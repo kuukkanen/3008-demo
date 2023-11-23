@@ -16,7 +16,9 @@
   const boardValues = Array.from({ length: 3 }, () => new Array(3).fill(""));
 
   function checkBoard() {
-    // Check rows.
+    let diagonalSymbols = 0;
+    let altDiagonalSymbols = 0;
+    // Check rows and columns.
     for (let i = 0; i < 3; i++) {
       let rowSameSymbols = 1;
       let colSameSymbols = 1;
@@ -35,6 +37,19 @@
         whoWon = boardValues[0][i];
         return;
       }
+
+      // Count the amount of symbols that match the first symbol of the diagonal line.
+      if (boardValues[i][i] === boardValues[0][0]) diagonalSymbols++;
+      if (boardValues[i][2 - i] === boardValues[0][2]) altDiagonalSymbols++;
+    }
+    // All are the same symbols so we won.
+    if (boardValues[0][0] !== "" && diagonalSymbols === 3) {
+      whoWon = boardValues[0][0];
+      return;
+    }
+    if (boardValues[0][2] !== "" && altDiagonalSymbols === 3) {
+      whoWon = boardValues[0][2];
+      return;
     }
   }
 
