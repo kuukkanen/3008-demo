@@ -106,8 +106,15 @@
       deleteBtn.className = "close";
       deleteBtn.textContent = "X";
 
+      //click event to delete created task
+      deleteBtn.addEventListener("click", () => {
+        li.remove();
+        updateLocalStorage();
+      });
+
       li.appendChild(deleteBtn);
       list.insertBefore(li, list.children[0]);
+
       localStorage.setItem(
         "tasks",
         JSON.stringify([
