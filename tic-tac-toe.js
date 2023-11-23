@@ -51,6 +51,18 @@
       whoWon = boardValues[0][2];
       return;
     }
+
+    // Check for a draw.
+    loop: for (let y = 0; y < 3; y++) {
+      for (let x = 0; x < 3; x++) {
+        if (boardValues[y][x] === "") break loop;
+        // We reached the end so the board is filled and there is no winner.
+        if (y === 2 && x === 2) {
+          whoWon = "ox";
+          return;
+        }
+      }
+    }
   }
 
   function onClick(x, y, square) {
@@ -70,7 +82,10 @@
       // Show who won the game.
       if (whoWon) {
         const wonText = document.createElement("div");
-        wonText.innerText = `"${whoWon.toUpperCase()}" won the game!`;
+        wonText.innerText =
+          whoWon === "ox"
+            ? "It's a draw!"
+            : `"${whoWon.toUpperCase()}" won the game!`;
         wonText.style.fontSize = "2rem";
         wonText.style.fontWeight = "bold";
         wonText.style.marginTop = "1rem";
