@@ -10,6 +10,18 @@
   board.style.gridTemplateRows = "repeat(3, 1fr)";
   content.appendChild(board); // eslint-disable-line
 
+  let isPlayer2Turn = false;
+
+  function onClick(x, y, square) {
+    // The square has no symbol yet.
+    if (!square.innerText) {
+      // Set the symbol.
+      square.innerText = isPlayer2Turn ? "x" : "o";
+      // Switch turns.
+      isPlayer2Turn = !isPlayer2Turn;
+    }
+  }
+
   // Column.
   for (let y = 0; y < 3; y++) {
     // Row.
@@ -23,7 +35,10 @@
       square.style.padding = "0";
       square.style.width = "100px";
       square.style.height = "100px";
-      square.value = " ";
+      square.style.fontSize = "3rem";
+      // When this square is clicked.
+      square.onclick = () => onClick(x, y, square);
+      // Add the square to the board.
       board.appendChild(square);
     }
   }
