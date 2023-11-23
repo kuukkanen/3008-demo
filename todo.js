@@ -38,10 +38,11 @@
   // update localStorage
   function updateLocalStorage() {
     const listItems = document.querySelectorAll("#myUL li");
-    const newTodoList = Array.from(listItems).map((item) => ({
-      task: item.innerText,
-      checked: item.className,
-    }));
+    const newTodoList = Array.from(listItems).map((item) => {
+      const taskText = item.childNodes[0].nodeValue.trim(); // task text content
+      const checked = item.className;
+      return { task: taskText, checked };
+    });
     localStorage.setItem("tasks", JSON.stringify(newTodoList));
   }
 
