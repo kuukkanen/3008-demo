@@ -11,7 +11,7 @@
   content.appendChild(board); // eslint-disable-line
 
   let isPlayer2Turn = false;
-  let hasWon = false;
+  let whoWon = null;
 
   const boardValues = Array.from({ length: 3 }, () => new Array(3).fill(""));
 
@@ -27,14 +27,20 @@
       }
 
       // All are the same symbols so we won.
-      if (boardValues[i][0] !== "" && rowSameSymbols === 3) hasWon = true;
-      if (boardValues[0][i] !== "" && colSameSymbols === 3) hasWon = true;
+      if (boardValues[i][0] !== "" && rowSameSymbols === 3) {
+        whoWon = boardValues[i][0];
+        return;
+      }
+      if (boardValues[0][i] !== "" && colSameSymbols === 3) {
+        whoWon = boardValues[0][i];
+        return;
+      }
     }
   }
 
   function onClick(x, y, square) {
     // Don't allow clicking when the game has been won.
-    if (hasWon) return;
+    if (whoWon) return;
 
     // The square has no symbol yet.
     if (!square.innerText) {
@@ -45,6 +51,16 @@
       isPlayer2Turn = !isPlayer2Turn;
       // Check the board after each turn.
       checkBoard();
+
+      // Show who won the game.
+      if (whoWon) {
+        const wonText = document.createElement("div");
+        wonText.innerText = `"${whoWon.toUpperCase()}" won the game!`;
+        wonText.style.fontSize = "2rem";
+        wonText.style.fontWeight = "bold";
+        wonText.style.marginTop = "1rem";
+        content.appendChild(wonText); // eslint-disable-line
+      }
     }
   }
 
