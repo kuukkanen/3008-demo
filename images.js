@@ -49,6 +49,7 @@
         <img class="medium-image" src="https://i0.wp.com/www.saitoguitars.com/wp-content/uploads/2023/03/Top1-20230331-scaled.jpg?fit=2560%2C1707&ssl=1">
         <img class="medium-image" src="https://www.artistguitars.co.uk/cdn/shop/files/16155_ffa08744-dda7-4395-8ccf-cff9c1fcf29a.jpg?v=1689165323">
         <img class="medium-image" src="https://www.prebeat.co.uk/images/johnny-brook-electric-guitar-red-p3722-13032_image.jpg">
+        <img class="medium-image" src="https://cdn.ecommercedns.uk/files/6/248156/6/27546066/1964-gibson-sg-standard-players-grade-07.jpg">
         <hr class="solid">`;
   content = document.getElementById("content"); // eslint-disable-line
   content.innerHTML = element; // eslint-disable-line
