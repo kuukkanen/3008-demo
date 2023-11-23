@@ -87,30 +87,27 @@
     return span;
   }
 
-  // function to create new list item
-  function createListItem(value) {
-    const li = document.createElement("li");
-    const t = document.createTextNode(value);
-    li.appendChild(t);
-
-    // attach close button
-    const span = createCloseButton();
-    li.appendChild(span);
-
-    return li;
-  }
-
   // function to add new list item
   function addListItem() {
     const inputValue = document.getElementById("myInput").value;
     if (inputValue === "") {
       alert("You must write something!");
     } else {
-      const newListItem = createListItem(inputValue);
-      document.getElementById("myUL").appendChild(newListItem);
-      updateLocalStorage();
+      const list = document.querySelector("#myUL");
+      const li = document.createElement("li");
+      li.innerHTML = `${inputValue}`;
+      list.insertBefore(li, list.children[0]);
+      localStorage.setItem(
+        "tasks",
+        JSON.stringify([
+          ...(JSON.parse(localStorage.getItem("tasks")) || []),
+          {
+            task: inputValue,
+            checked: "",
+          },
+        ])
+      );
     }
-
     // clear input text
     document.getElementById("myInput").value = "";
   }
