@@ -38,11 +38,11 @@
   // update localStorage
   function updateLocalStorage() {
     const listItems = document.querySelectorAll("#myUL li");
-    const todoList = Array.from(listItems).map((item) => ({
-      className: item.className,
-      textContent: item.textContent,
+    const newTodoList = Array.from(listItems).map((item) => ({
+      task: item.textContent,
+      checked: item.className,
     }));
-    localStorage.setItem("todoList", JSON.stringify(todoList));
+    localStorage.setItem("tasks", JSON.stringify(newTodoList));
   }
 
   // toggle "line-through" when clicking on a list item
