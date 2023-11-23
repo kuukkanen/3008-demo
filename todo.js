@@ -108,9 +108,7 @@
 
       //click event to delete created task
       deleteBtn.addEventListener("click", () => {
-        li.remove();
-        todoList = todoList.filter((t) => t.task !== inputValue);
-        updateLocalStorage();
+        deleteTask(li, { task: inputValue });
       });
 
       li.appendChild(deleteBtn);
@@ -130,6 +128,13 @@
     // clear input text
     document.getElementById("myInput").value = "";
   }
-
   document.getElementById("addElement").addEventListener("click", addListItem);
+
+  // delete a task
+  function deleteTask(li, task) {
+    li.remove();
+    todoList = todoList.filter((t) => t.task !== task.task);
+
+    updateLocalStorage();
+  }
 })();
