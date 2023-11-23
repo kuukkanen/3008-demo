@@ -45,7 +45,7 @@
         <img class="medium-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Guitar_1.jpg/640px-Guitar_1.jpg">    
         <img class="medium-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Guitars_of_the_sort_played_by_Lennon.jpg/640px-Guitars_of_the_sort_played_by_Lennon.jpg">    
         <img class="medium-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Adapted_Guitar_I.jpg/640px-Adapted_Guitar_I.jpg">
-        
+        <img class="medium-image" src="https://www.andysmusic.com/cdn/shop/files/Used-Squier-Mini-Stratocaster-34-Size-Electric-Guitar-Black-Mint-Condition.jpg?v=1688614436">
         
         <hr class="solid">`;
   content = document.getElementById("content"); // eslint-disable-line
