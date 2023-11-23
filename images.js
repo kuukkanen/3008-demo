@@ -42,6 +42,8 @@
         
         <hr class="solid">
         <h2>Guitars</h2>
+        <img class="medium-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Guitar_1.jpg/640px-Guitar_1.jpg">    
+        
         
         
         <hr class="solid">`;
