@@ -27,10 +27,15 @@
     const list = document.querySelector("#myUL");
     todoList.forEach((task) => {
       const li = document.createElement("li");
+      const deleteBtn = document.createElement("span");
       // Conditionally apply a class based on the value of task.checked
       const checkedClass = task.checked ? "checked" : "";
       li.className = checkedClass;
       li.innerHTML = `${task.task}`;
+      deleteBtn.className = "close";
+      deleteBtn.textContent = "X";
+
+      li.appendChild(deleteBtn);
       list.insertBefore(li, list.children[0]);
     });
   }
@@ -55,7 +60,7 @@
     }
   });
 
-  // Create a "close" button and append it to each list item
+  /*   // Create a "close" button and append it to each list item
   const myNodelist = document.getElementById("myUL").getElementsByTagName("LI"); //only myUL li:s
   for (let i = 0; i < myNodelist.length; i++) {
     const span = createCloseButton();
@@ -71,7 +76,7 @@
     }
   });
 
-  // function to create close button
+   // function to create close button
   function createCloseButton() {
     const span = document.createElement("SPAN");
     const txt = document.createTextNode("X");
@@ -86,7 +91,7 @@
     };
 
     return span;
-  }
+  } */
 
   // function to add new list item
   function addListItem() {
