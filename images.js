@@ -39,6 +39,11 @@
         <img class="medium-image" src="https://avatar.amuniversal.com/feature_avatars/recommendation_images/features/ga/large_rec-201701251556.jpg">
         <img class="medium-image" src="https://i.guim.co.uk/img/media/20a74d437c1ae0ef38c7c87d49e3d4db271b0cb3/569_167_2584_1550/master/2584.jpg?width=1200&height=900&quality=85&auto=format&fit=crop&s=775be45f9af62070840c2740f3e6c555">
         <img class="medium-image" src="https://www.giantbomb.com/a/uploads/original/0/316/510127-garfield_anime_wallpaper.jpg">    
+        
+        <hr class="solid">
+        <h2>Guitars</h2>
+        
+        
         <hr class="solid">`;
   content = document.getElementById("content"); // eslint-disable-line
   content.innerHTML = element; // eslint-disable-line
