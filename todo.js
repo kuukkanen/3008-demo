@@ -109,6 +109,7 @@
       //click event to delete created task
       deleteBtn.addEventListener("click", () => {
         li.remove();
+        todoList = todoList.filter((t) => t.task !== inputValue);
         updateLocalStorage();
       });
 
