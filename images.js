@@ -44,7 +44,7 @@
         <h2>Guitars</h2>
         <img class="medium-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Guitar_1.jpg/640px-Guitar_1.jpg">    
         <img class="medium-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Guitars_of_the_sort_played_by_Lennon.jpg/640px-Guitars_of_the_sort_played_by_Lennon.jpg">    
-        
+        <img class="medium-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Adapted_Guitar_I.jpg/640px-Adapted_Guitar_I.jpg">
         
         
         <hr class="solid">`;
