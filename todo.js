@@ -21,6 +21,7 @@
 
   loadList();
 
+  // create li elements from localStorage
   function loadList() {
     if (!todoList) return;
 
@@ -84,6 +85,7 @@
       li.appendChild(deleteBtn);
       list.insertBefore(li, list.children[0]);
 
+      //save to localStorage
       localStorage.setItem(
         "tasks",
         JSON.stringify([
