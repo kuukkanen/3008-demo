@@ -11,8 +11,8 @@ content.innerHTML = element; // eslint-disable-line
 
 getDog();
 
-const button = getElementById("imageButton");
-button.onClick = () => {
+const button = document.getElementById("imageButton");
+button.onclick = () => {
     getDog();
 }
 
