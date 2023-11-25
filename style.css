@@ -85,6 +85,7 @@ main {
   margin: 1.5em auto;
   border: 2px solid white;
   border-radius: 5px;
+  box-shadow: 10px 15px 15px #505050;
 }
 
 /* Adding animation to image when clicking the image */
