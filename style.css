@@ -82,7 +82,7 @@ main {
 .dog-image {
   display: block;
   height: 12em;
-  margin: 1.5em;
+  margin: 1.5em auto;
   border: 2px solid white;
   border-radius: 5px;
 }
