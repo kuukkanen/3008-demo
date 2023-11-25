@@ -80,7 +80,7 @@ main {
 }
 
 .dog-image {
-  display: inline;
+  display: block;
   height: 12em;
   margin: 1.5em;
   border: 2px solid white;
