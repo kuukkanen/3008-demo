@@ -3,10 +3,13 @@
 
   // Create color changer button.
   const button = document.createElement("button");
+  const container = document.createElement('div');
+  container.classList.add('container');
   button.textContent = "Press to change Button Color";
 
   // Append to content.
-  content.appendChild(button); // eslint-disable-line
+  content.appendChild(container);
+  container.appendChild(button); // eslint-disable-line
 
   // Color Generator
   // eslint-disable-next-line
