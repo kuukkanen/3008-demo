@@ -16,13 +16,20 @@ button.onclick = () => {
 
 async function getDog() {
     const img = document.getElementById('Dog');
+    const url = await getImageLink();
+    img.src = url;
+}
+
+async function getImageLink () {
     const url = "https://dog.ceo/api/breeds/image/random";
     const response = await fetch(url,{
         headers: {
             "Accept": "application/json",
           }});
     const result = await response.json();
-    img.src = result.message;
+    return result.message
 }
+
+
 getDog();
 })();
