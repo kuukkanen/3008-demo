@@ -9,7 +9,9 @@
     </div>
     <div>
       <h2>Results</h2>
-      <span>Total Bill with Tip</span>
+      <laber for="tipAmount">Tip Amount:</label>
+      <input type="number" id="tipAmount" disabled />
+      <span>Total Bill with Tip:</span>
       <input type="number" id="totalWithTip" disabled />
     </div>
   </div>`;
@@ -25,7 +27,9 @@
     const finalBill = bill + tipValue;
     console.log(finalBill);
 
+    const tipAmount = document.querySelector("#tipAmount");
     const totalWithTip = document.getElementById("totalWithTip");
+    tipAmount.value = tipValue;
     totalWithTip.value = finalBill;
   };
 })();
