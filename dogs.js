@@ -11,7 +11,15 @@ content.innerHTML = element; // eslint-disable-line
 // https://dog.ceo/api/breeds/image/random
 
 function getDog() {
-
+    const img = document.getElementById('Dog');
+    const url = "https://dog.ceo/api/breeds/image/random";
+    fetch(url{
+        headers: {
+            "Accept": "application/json",
+          },
+          body: JSON.stringify(data),
+    }).then((response) => response.JSON)
+    .then((result) => img.textContent = result)
 }
 
 })();
