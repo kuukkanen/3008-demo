@@ -79,6 +79,14 @@ main {
   border-radius: 5px;
 }
 
+.dog-image {
+  display: inline;
+  height: 10em;
+  margin: 1.5em;
+  border: 2px solid white;
+  border-radius: 5px;
+}
+
 /* Adding animation to image when clicking the image */
 .medium-image:active {
   animation-name: spin;
