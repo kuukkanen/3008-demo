@@ -5,15 +5,21 @@
   const element = `<div class="container">
                     <h1>Dog Image Generator</h1>
                     <img id="Dog" src=https://dog.ceo/api/breeds/image/random">
-                    <button onClick=getDog()> Get Dog Image</button>
+                    <button id="imageButton"> Get Dog Image</button>
                     </div>`;
 content.innerHTML = element; // eslint-disable-line
 // https://dog.ceo/api/breeds/image/random
 
+const button = getElementById("imageButton");
+button.onClick = () => {
+    getDog();
+}
+
+
 function getDog() {
     const img = document.getElementById('Dog');
     const url = "https://dog.ceo/api/breeds/image/random";
-    fetch(url{
+    fetch(url,{
         headers: {
             "Accept": "application/json",
           },
