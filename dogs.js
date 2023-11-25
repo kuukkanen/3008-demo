@@ -9,13 +9,10 @@
                     </div>`;
 content.innerHTML = element; // eslint-disable-line
 
-getDog();
-
 const button = document.getElementById("imageButton");
 button.onclick = () => {
     getDog();
 }
-
 
 async function getDog() {
     const img = document.getElementById('Dog');
@@ -27,5 +24,5 @@ async function getDog() {
     const result = await response.json();
     img.src = result.message;
 }
-
+getDog();
 })();
