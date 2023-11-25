@@ -4,11 +4,12 @@
       // Header element with divider
   const element = `<div class="container">
                     <h1>Dog Image Generator</h1>
-                    <img id="Dog" src=https://dog.ceo/api/breeds/image/random">
+                    <img id="Dog" src="">
                     <button id="imageButton" class="medium-image"> Get Dog Image</button>
                     </div>`;
 content.innerHTML = element; // eslint-disable-line
-// https://dog.ceo/api/breeds/image/random
+
+getDog();
 
 const button = getElementById("imageButton");
 button.onClick = () => {
