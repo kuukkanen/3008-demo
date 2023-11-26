@@ -1,9 +1,7 @@
 (function () {
   madeby.textContent = "Lassi Inkinen"; // eslint-disable-line
 
-  let todoList = localStorage.getItem("tasks")
-    ? JSON.parse(localStorage.getItem("tasks"))
-    : [];
+  let todoList = JSON.parse(localStorage.getItem("tasks")) ?? [];
 
   const element = `
     <div class="container">
