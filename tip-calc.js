@@ -5,7 +5,8 @@
     <h1>Tip Calculator</h1>
     <div>
       <input type="number" id="bill" placeholder="Total Bill" />
-      <input type="range" id="tip" placeholder="Tip" />
+      <input type="range" id="tip" placeholder="Tip" /><span id="tipPercent"></span>
+      <br>
       <button id="calculate">Calculate</button>
     </div>
     <div>
@@ -19,6 +20,10 @@
 
   content = document.getElementById("content"); // eslint-disable-line
   content.innerHTML = element; // eslint-disable-line
+
+  const slider = document.getElementById("tip");
+  const showTip = document.getElementById("tipPercent");
+  showTip.innerHTML = slider.value;
 
   document.getElementById("calculate").onclick = () => {
     const bill = Number(document.getElementById("bill").value);
