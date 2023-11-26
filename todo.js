@@ -21,7 +21,7 @@
 
   loadList();
 
-  // create li elements from localStorage
+  // Create li elements from localStorage.
   function loadList() {
     if (!todoList) return;
 
@@ -29,7 +29,7 @@
     todoList.forEach((task) => {
       const li = document.createElement("li");
       const deleteBtn = document.createElement("span");
-      // Conditionally apply a class based on the value of task.checked
+      // Conditionally apply a class based on the value of task.checked.
       const checkedClass = task.checked ? "checked" : "";
       li.className = checkedClass;
       li.innerHTML = `${task.task}`;
@@ -44,18 +44,18 @@
     });
   }
 
-  // update localStorage
+  // Update localStorage.
   function updateLocalStorage() {
     const listItems = document.querySelectorAll("#myUL li");
     const newTodoList = Array.from(listItems).map((item) => {
-      const taskText = item.childNodes[0].nodeValue.trim(); // task text content
+      const taskText = item.childNodes[0].nodeValue.trim(); // Task text content.
       const checked = item.className;
       return { task: taskText, checked };
     });
     localStorage.setItem("tasks", JSON.stringify(newTodoList));
   }
 
-  // toggle "line-through" when clicking on a list item
+  // Toggle "line-through" when clicking on a list item.
   const list = document.querySelector("#myUL");
   list.addEventListener("click", (ev) => {
     if (ev.target.tagName === "LI") {
@@ -64,7 +64,7 @@
     }
   });
 
-  // function to add new list item
+  // Function to add new list item.
   function addListItem() {
     const inputValue = document.getElementById("myInput").value;
     if (inputValue === "") {
@@ -77,7 +77,7 @@
       deleteBtn.className = "close";
       deleteBtn.textContent = "X";
 
-      //click event to delete created task
+      // Click event to delete created task.
       deleteBtn.addEventListener("click", () => {
         deleteTask(li, { task: inputValue });
       });
@@ -85,7 +85,7 @@
       li.appendChild(deleteBtn);
       list.insertBefore(li, list.children[0]);
 
-      //save to localStorage
+      // Save to localStorage.
       localStorage.setItem(
         "tasks",
         JSON.stringify([
@@ -97,12 +97,12 @@
         ]),
       );
     }
-    // clear input text
+    // Clear input text.
     document.getElementById("myInput").value = "";
   }
   document.getElementById("addElement").addEventListener("click", addListItem);
 
-  // delete a task
+  // Delete a task.
   function deleteTask(li, task) {
     li.remove();
     todoList = todoList.filter((t) => t.task !== task.task);
