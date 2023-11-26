@@ -25,6 +25,10 @@
   const showTip = document.getElementById("tipPercent");
   showTip.innerHTML = slider.value;
 
+  slider.oninput = function () {
+    showTip.innerHTML = this.value;
+  };
+
   document.getElementById("calculate").onclick = () => {
     const bill = Number(document.getElementById("bill").value);
     const tip = Number(document.getElementById("tip").value);
