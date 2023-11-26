@@ -96,7 +96,7 @@
             task: inputValue,
             checked: "",
           },
-        ])
+        ]),
       );
     }
     // clear input text
