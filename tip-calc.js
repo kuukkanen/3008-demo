@@ -5,7 +5,7 @@
     <h1>Tip Calculator</h1>
     <div>
       <input type="number" id="bill" placeholder="Total Bill" />
-      <input type="number" id="tip" placeholder="Tip" />
+      <input type="range" id="tip" placeholder="Tip" />
       <button id="calculate">Calculate</button>
     </div>
     <div>
