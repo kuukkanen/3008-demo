@@ -10,9 +10,7 @@
   content.innerHTML = element; // eslint-disable-line
 
   const button = document.getElementById("dogButton");
-  button.onclick = () => {
-    getDog();
-  };
+  button.onclick = getDog;
 
   async function getDog() {
     const img = document.getElementById("Dog");
