@@ -1,10 +1,10 @@
-/* Remove margins and padding from the list */
+/* Remove margins and padding from the list. */
 #myUL {
   margin: 0;
   padding: 0;
 }
 
-/* Style the list items */
+/* Style the list items. */
 #myUL li {
   cursor: pointer;
   position: relative;
@@ -14,24 +14,24 @@
   font-size: 18px;
   transition: 0.2s;
   border-radius: 10px;
-  /*li items select none */
+  /* li items select none. */
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
 }
 
-/* Set all odd list items to a different color (zebra-stripes) */
+/* Set all odd list items to a different color (zebra-stripes). */
 #myUL li:nth-child(odd) {
   background: #607a9d;
 }
 
-/* Darker background-color on hover */
+/* Darker background-color on hover. */
 #myUL li:hover {
   background: #4e637e;
 }
 
-/* When clicked on, add a background color and strike out text */
+/* When clicked on, add a background color and strike out text. */
 #myUL li.checked {
   background: #666;
   text-decoration: line-through;
@@ -50,7 +50,7 @@
   width: 7px;
 }
 
-/* Style the input */
+/* Style the input. */
 #myInput {
   margin: 0;
   border: none;
@@ -61,7 +61,7 @@
   font-size: 16px;
 }
 
-/* Style the "Add" button */
+/* Style the "Add" button. */
 .addBtn {
   padding: 10px;
   width: 25%;
@@ -79,7 +79,7 @@
   background-color: #bbb;
 }
 
-/* Style the close button */
+/* Style the close button. */
 .close {
   position: absolute;
   border-radius: 10px;
@@ -191,7 +191,7 @@ main {
   background-color: #b0d9b1;
 }
 
-/* Adding animation to image when clicking the image */
+/* Adding animation to image when clicking the image. */
 .medium-image:active {
   animation-name: spin;
   animation-duration: 1500ms;
@@ -199,7 +199,7 @@ main {
   animation-timing-function: linear;
 }
 
-/* Spinning animation */
+/* Spinning animation. */
 @keyframes spin {
   from {
     transform: rotate(0deg);
@@ -220,7 +220,7 @@ hr.solid {
   }
 }
 
-/* Default div box style */
+/* Default div box style. */
 .container {
   color: white;
   background-color: #4f709c;
