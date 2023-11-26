@@ -89,7 +89,7 @@
       localStorage.setItem(
         "tasks",
         JSON.stringify([
-          ...(JSON.parse(localStorage.getItem("tasks")) || []),
+          ...(JSON.parse(localStorage.getItem("tasks")) ?? []),
           {
             task: inputValue,
             checked: "",
