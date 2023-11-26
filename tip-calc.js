@@ -1,5 +1,14 @@
 (function () {
   madeby.textContent = "Lassi Inkinen"; // eslint-disable-line
+
+  const font = `{
+    font-size: 1.8rem;
+    font-Family: monospace;
+    }`;
+  const style = document.createElement("style");
+  document.head.appendChild(style);
+  style.sheet.insertRule(`#tipz > * ${font}`);
+  console.log(font.trim());
   const element = `
   <div class="container">
     <h1>Tip Calculator</h1>
