@@ -16,7 +16,7 @@
   // Append to elements to content.
   content.appendChild(container);
   container.appendChild(header);
-  container.appendChild(button); // eslint-disable-line
+  container.appendChild(button);
 
   // Color Generator
   // eslint-disable-next-line
