@@ -3,18 +3,24 @@
   const element = `
   <div class="container">
     <h1>Tip Calculator</h1>
-    <div>
-      <input type="number" id="bill" placeholder="Total Bill" />
-      <input type="range" id="tip" placeholder="Tip" /><span id="tipPercent"></span>
-      <br>
-      <button id="calculate">Calculate</button>
-    </div>
-    <div>
-      <h2>Results</h2>
-      <laber for="tipAmount">Tip Amount:</label>
-      <input type="number" id="tipAmount" disabled />
-      <span>Total Bill with Tip:</span>
-      <input type="number" id="totalWithTip" disabled />
+    <div id="tipz">
+      <div>
+        <label for="bill">€</label>
+        <input type="number" id="bill" placeholder="Total Bill" />
+        <div >
+        <input type="range" min="1" max="100" value="10" id="tip"/><span id="tipPercent"></span>
+        </div>
+        <br>
+        <button id="calculate">Calculate</button>
+      </div>
+      <div>
+        <h2>Results</h2>
+        <laber for="tipAmount">Tip Amount:</label>
+        <input type="number" id="tipAmount" disabled />€
+        <br>
+        <laber for="tipAmount">Total Bill with Tip:</label>
+        <input type="number" id="totalWithTip" disabled />€
+      </div>
     </div>
   </div>`;
 
@@ -22,11 +28,12 @@
   content.innerHTML = element; // eslint-disable-line
 
   const slider = document.getElementById("tip");
+  slider.style.width = "100%";
   const showTip = document.getElementById("tipPercent");
-  showTip.innerHTML = slider.value;
+  showTip.innerHTML = `${slider.value}%`;
 
   slider.oninput = function () {
-    showTip.innerHTML = this.value;
+    showTip.innerHTML = `${this.value}%`;
   };
 
   document.getElementById("calculate").onclick = () => {
