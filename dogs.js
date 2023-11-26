@@ -5,11 +5,11 @@
   const element = `<div class="container">
                     <h1>Dog Image Generator</h1>
                     <img id="Dog" class="dog-image" src="">
-                    <button id="imageButton"> Get Dog Image</button>
+                    <button id="dogButton"> Get Dog Image</button>
                     </div>`;
 content.innerHTML = element; // eslint-disable-line
 
-const button = document.getElementById("imageButton");
+const button = document.getElementById("dogButton");
 button.onclick = () => {
     getDog();
 }
