@@ -88,6 +88,15 @@ main {
   box-shadow: 10px 15px 15px #505050;
 }
 
+#dogButton {
+  background-color: #86a789;
+  transition: background-color 0.1s;
+}
+
+#dogButton:active {
+  background-color: #b0d9b1;
+}
+
 /* Adding animation to image when clicking the image */
 .medium-image:active {
   animation-name: spin;
