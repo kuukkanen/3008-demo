@@ -1,4 +1,98 @@
-@import "todo.css";
+/* Remove margins and padding from the list. */
+#myUL {
+  margin: 0;
+  padding: 0;
+}
+
+/* Style the list items. */
+#myUL li {
+  cursor: pointer;
+  position: relative;
+  padding: 12px 8px 12px 40px;
+  list-style-type: none;
+  background: #7194c5;
+  font-size: 18px;
+  transition: 0.2s;
+  border-radius: 10px;
+  /* li items select none. */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Set all odd list items to a different color (zebra-stripes). */
+#myUL li:nth-child(odd) {
+  background: #607a9d;
+}
+
+/* Darker background-color on hover. */
+#myUL li:hover {
+  background: #4e637e;
+}
+
+/* When clicked on, add a background color and strike out text. */
+#myUL li.checked {
+  background: #666;
+  text-decoration: line-through;
+}
+
+#myUL li.checked::before {
+  content: "";
+  position: absolute;
+  border-color: #fff;
+  border-style: solid;
+  border-width: 0 2px 2px 0;
+  top: 10px;
+  left: 16px;
+  transform: rotate(45deg);
+  height: 15px;
+  width: 7px;
+}
+
+/* Style the input. */
+#myInput {
+  margin: 0;
+  border: none;
+  border-radius: 10px;
+  width: 75%;
+  padding: 10px;
+  float: left;
+  font-size: 16px;
+}
+
+/* Style the "Add" button. */
+.addBtn {
+  padding: 10px;
+  width: 25%;
+  background: #d9d9d9;
+  color: #555;
+  float: left;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 10px;
+}
+
+.addBtn:hover {
+  background-color: #bbb;
+}
+
+/* Style the close button. */
+.close {
+  position: absolute;
+  border-radius: 10px;
+  right: 0;
+  top: 0;
+  padding: 12px 16px 12px 16px;
+}
+
+.close:hover {
+  background-color: #af3128;
+  color: white;
+}
+
 /* Use better box-sizing on every element. */
 * {
   box-sizing: border-box;
@@ -97,7 +191,7 @@ main {
   background-color: #b0d9b1;
 }
 
-/* Adding animation to image when clicking the image */
+/* Adding animation to image when clicking the image. */
 .medium-image:active {
   animation-name: spin;
   animation-duration: 1500ms;
@@ -105,7 +199,7 @@ main {
   animation-timing-function: linear;
 }
 
-/* Spinning animation */
+/* Spinning animation. */
 @keyframes spin {
   from {
     transform: rotate(0deg);
@@ -126,7 +220,7 @@ hr.solid {
   }
 }
 
-/* Default div box style */
+/* Default div box style. */
 .container {
   color: white;
   background-color: #4f709c;

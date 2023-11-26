@@ -20,13 +20,13 @@
 
   // The Increase Button increases digit by 1 when clicked
   increaseButton.addEventListener("click", () => {
-    digit += 1;
+    digit++;
     updateDisplay();
   });
 
   // The Deccrease Button deccreases digit by 1 when clicked
   decreaseButton.addEventListener("click", () => {
-    digit -= 1;
+    digit--;
     updateDisplay();
   });
 

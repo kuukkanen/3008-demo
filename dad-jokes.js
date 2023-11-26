@@ -35,11 +35,12 @@
       /* convert Stringified JSON response to Javascript Object */
       .then((response) => response.json())
       /* replace innerText of jokeText with data.joke */
-      .then((data) => {
+      .then(
         // extract the joke text
-        const joke = data.joke;
-        // do the replacement
-        jokeText.innerText = joke;
-      });
+        ({ joke }) => {
+          // do the replacement
+          jokeText.innerText = joke;
+        },
+      );
   }
 })();
