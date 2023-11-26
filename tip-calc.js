@@ -1,4 +1,5 @@
 (function () {
+  madeby.textContent = "Lassi Inkinen"; // eslint-disable-line
   const element = `
   <div class="container">
     <h1>Tip Calculator</h1>
