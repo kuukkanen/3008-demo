@@ -14,7 +14,7 @@
     <div id="tipz">
       <div>
         <label for="bill">€</label>
-        <input type="number" id="bill" placeholder="Total Bill" />
+        <input type="number" class="number" id="bill" placeholder="Total Bill" />
         <div >
         <input type="range" min="1" max="100" value="10" class="slider" id="tip"/><span id="tipPercent"></span>
         </div>
@@ -22,10 +22,10 @@
       <div>
         <h2>Results</h2>
         <label for="tipAmount">Tip Amount:</label>
-        <input type="number" id="tipAmount" disabled />€
+        <input type="number" class="number" id="tipAmount" disabled />€
         <br>
         <label for="tipAmount">Total Bill with Tip:</label>
-        <input type="number" id="totalWithTip" disabled />€
+        <input type="number" class="number" id="totalWithTip" disabled />€
       </div>
     </div>
   </div>`;

@@ -34,6 +34,15 @@
   cursor: pointer;
 }
 
+.number {
+  margin: 0;
+  border: none;
+  border-radius: 10px;
+  width: 25%;
+  padding: 10px;
+  font-size: 16px;
+}
+
 /* Remove margins and padding from the list. */
 #myUL {
   margin: 0;
