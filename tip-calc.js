@@ -3,12 +3,11 @@
 
   const font = `{
     font-size: 1.8rem;
-    font-Family: monospace;
+    font-family: monospace;
     }`;
   const style = document.createElement("style");
   document.head.appendChild(style);
   style.sheet.insertRule(`#tipz > * ${font}`);
-  console.log(font.trim());
   const element = `
   <div class="container">
     <h1>Tip Calculator</h1>
@@ -22,10 +21,10 @@
       </div>
       <div>
         <h2>Results</h2>
-        <laber for="tipAmount">Tip Amount:</label>
+        <label for="tipAmount">Tip Amount:</label>
         <input type="number" id="tipAmount" disabled />€
         <br>
-        <laber for="tipAmount">Total Bill with Tip:</label>
+        <label for="tipAmount">Total Bill with Tip:</label>
         <input type="number" id="totalWithTip" disabled />€
       </div>
     </div>
@@ -51,7 +50,6 @@
 
     const tipValue = bill * (tip / 100);
     const finalBill = bill + tipValue;
-    console.log(finalBill);
 
     const tipAmount = document.querySelector("#tipAmount");
     const totalWithTip = document.getElementById("totalWithTip");
