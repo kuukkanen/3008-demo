@@ -1,3 +1,4 @@
+/* Tip calculator slider track styling*/
 .slider {
   -webkit-appearance: none;
   appearance: none;
@@ -15,6 +16,7 @@
   opacity: 1;
 }
 
+/* Tip calculator slider thumb for webkit browsers*/
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
@@ -24,7 +26,7 @@
   background: #0667c2;
   cursor: pointer;
 }
-
+/* Tip calculator slider thumb for mozilla */
 .slider::-moz-range-thumb {
   width: 25px;
   height: 25px;
