@@ -43,7 +43,9 @@
     showTip.innerHTML = `${this.value}%`;
   };
 
-  slider.onchange = () => {
+  slider.onchange = () => calculate();
+
+  function calculate() {
     const bill = Number(document.getElementById("bill").value);
     const tip = document.getElementById("tip").value;
 
@@ -55,5 +57,5 @@
     const totalWithTip = document.getElementById("totalWithTip");
     tipAmount.value = tipValue;
     totalWithTip.value = finalBill;
-  };
+  }
 })();
