@@ -6,9 +6,19 @@
   background: #d3d3d3;
   outline: none;
   opacity: 0.7;
-  border-radius: 10px;
+  border-radius: 25px;
   -webkit-transition: 0.2s;
   transition: opacity 0.2s;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #0667c2;
+  cursor: pointer;
 }
 
 /* Remove margins and padding from the list. */
