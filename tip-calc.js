@@ -42,7 +42,7 @@
     calculate();
   };
 
-  document.getElementById("bill").onchange = () => calculate();
+  document.getElementById("bill").oninput = () => calculate();
 
   function calculate() {
     const bill = Number(document.getElementById("bill").value);
