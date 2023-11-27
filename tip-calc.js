@@ -19,8 +19,6 @@
         <div >
         <input type="range" min="1" max="100" value="10" id="tip"/><span id="tipPercent"></span>
         </div>
-        <br>
-        <button id="calculate">Calculate</button>
       </div>
       <div>
         <h2>Results</h2>
