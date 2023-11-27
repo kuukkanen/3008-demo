@@ -45,9 +45,9 @@
     showTip.innerHTML = `${this.value}%`;
   };
 
-  document.getElementById("calculate").onclick = () => {
+  slider.onchange = () => {
     const bill = Number(document.getElementById("bill").value);
-    const tip = Number(document.getElementById("tip").value);
+    const tip = document.getElementById("tip").value;
 
     const tipValue = bill * (tip / 100);
     const finalBill = bill + tipValue;
