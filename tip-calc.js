@@ -55,7 +55,7 @@
 
     const tipAmount = document.querySelector("#tipAmount");
     const totalWithTip = document.getElementById("totalWithTip");
-    tipAmount.value = tipValue;
-    totalWithTip.value = finalBill;
+    tipAmount.value = tipValue.toFixed(2);
+    totalWithTip.value = finalBill.toFixed(2);
   }
 })();
