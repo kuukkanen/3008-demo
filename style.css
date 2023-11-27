@@ -21,6 +21,13 @@
   cursor: pointer;
 }
 
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #04aa6d;
+  cursor: pointer;
+}
+
 /* Remove margins and padding from the list. */
 #myUL {
   margin: 0;
