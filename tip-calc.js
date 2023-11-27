@@ -38,12 +38,12 @@
   slider.style.width = "100%";
   const showTip = document.getElementById("tipPercent");
   showTip.innerHTML = `${slider.value}%`;
-
+  slider.onchange = () => calculate();
   slider.oninput = function () {
     showTip.innerHTML = `${this.value}%`;
   };
 
-  slider.onchange = () => calculate();
+  document.getElementById("bill").onchange = () => calculate();
 
   function calculate() {
     const bill = Number(document.getElementById("bill").value);
